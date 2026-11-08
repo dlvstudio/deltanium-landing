@@ -1,192 +1,160 @@
 (() => {
   const dict = {
     en: {
-      "meta.title": "Deltanium | Encrypt locally. Index centrally.",
+      "meta.title": "Deltanium | Your social life, only yours",
       "meta.desc":
-        "Decentralized social network with client-side ECIES/Umbral PRE, N-of-M encrypted store replicas, and a Central API that only indexes — never holds your plaintext.",
-      "nav.architecture": "Architecture",
-      "nav.privacy": "Privacy",
-      "nav.chat": "Chat",
-      "nav.ecosystem": "Ecosystem",
-      "nav.nodes": "Nodes",
-      "nav.run": "Run a node",
-      "hero.line": "Encrypt locally. Index centrally. Replicate across stores.",
+        "Deltanium is a social network where you hold the keys. Post, follow, and chat without giving up your privacy.",
+      "nav.why": "Why Deltanium",
+      "nav.features": "What you can do",
+      "nav.privacy": "Your privacy",
+      "nav.join": "Join",
+      "nav.cta": "Join the network",
+      "hero.line": "Your social life — without selling your privacy.",
       "hero.sub":
-        "A decentralized social network where the app holds the keys, Store nodes hold ciphertext, and Central API never sees your plaintext.",
-      "hero.cta1": "See how it works",
-      "hero.cta2": "Ecosystem",
-      "diagram.centralSub": "index · registry · signaling",
-      "diagram.cipher": "ciphertext",
-      "diagram.replica": "N-of-M replica",
-      "diagram.register": "register-replicas",
-      "diagram.decision": "signed decision",
-      "arch.kicker": "Post & file path",
-      "arch.title": "App orchestrates. Central only indexes.",
-      "arch.copy":
-        "Content is encrypted on-device, placed as full replicas on N Store nodes, then registered with a signed placement index. Central API coordinates identity, policy, and discovery — not media blobs.",
-      "arch.s1.t": "Client-side encryption",
-      "arch.s1.p":
-        "Posts and files are sealed in the Flutter app with ECIES (private/me) or Umbral PRE (followers). Public posts stay readable; private ones never leave the device as plaintext.",
-      "arch.s2.t": "N-of-M store placement",
-      "arch.s2.p":
-        "The app discovers Store nodes via storenode/list, then uploads the same ciphertext to N nodes (default REPLICATION_FACTOR=2). Full replicas — no DHT sharding in the MVP.",
-      "arch.s3.t": "Signed register-replicas",
-      "arch.s3.p":
-        "Placement is indexed with POST /api/storedfile/register-replicas under SignatureAuth. Same fileId, multiple storeNodeId rows — Central stores the map, not the bytes.",
-      "arch.s4.t": "Follower rekeys (PRE)",
-      "arch.s4.p":
-        "When sharing with followers, the author generates rekeys client-side and uploads them in a signed batch. Followers fetch transform material; Store validates PRE tokens through Central with an internal service token.",
-      "priv.kicker": "Security model",
-      "priv.title": "Keys on the client. Trust minimized on the wire.",
+        "Post, follow friends, and chat on a network you actually own. Your keys stay with you. We never read your private content.",
+      "hero.cta1": "Become a user",
+      "hero.cta2": "Why it matters",
+      "visual.name": "You",
+      "visual.post": "Sharing a quiet weekend — only with people I choose.",
+      "visual.seal": "Only you hold the key",
+      "visual.friend": "A friend",
+      "visual.chat": "Private chat. End to end. No ads in between.",
+      "why.kicker": "Why switch",
+      "why.title": "Social media should not own your life.",
+      "why.copy":
+        "Big platforms watch, rank, and monetize every scroll. Deltanium is built so your account, your posts, and your conversations belong to you — not to a company dashboard.",
+      "why.p1.t": "You hold the keys",
+      "why.p1.p":
+        "Your identity starts on your device. No one else can pretend to be you or quietly unlock your private posts.",
+      "why.p2.t": "Private means private",
+      "why.p2.p":
+        "Share with everyone, with followers, or just yourself. Private content stays sealed — even from the network that stores it.",
+      "why.p3.t": "A network you help grow",
+      "why.p3.p":
+        "Every new person makes the community stronger. Join as a user today; help run the network later if you want.",
+      "feat.kicker": "Everyday use",
+      "feat.title": "Everything you expect from social — done differently.",
+      "feat.f1.t": "Post & follow",
+      "feat.f1.p":
+        "Share moments with the people who matter. Follow creators you trust. Your feed stays yours.",
+      "feat.f2.t": "Chat freely",
+      "feat.f2.p":
+        "Talk one-to-one when you are both online, or leave a message for later. Conversations stay between you.",
+      "feat.f3.t": "Choose who sees what",
+      "feat.f3.p":
+        "Public when you want reach. Followers-only when you want a circle. Private when it is just for you.",
+      "priv.kicker": "Peace of mind",
+      "priv.title": "We cannot read what you lock.",
       "priv.copy":
-        "Requests that mutate state are signed with the user key. Replay windows are short. Sensitive service calls between Store/Blocker and Central use an internal token — not user credentials.",
-      "priv.sig": "Method + path + timestamp + body hash. Headers: X-User-PubKey, X-Timestamp, X-Signature.",
-      "priv.pre": "Followers-only content is re-encrypted for recipients without giving Store the content key.",
-      "priv.internal": "Store token validation and Blocker tx pull require X-Internal-Token.",
-      "priv.voucher": "Store and Block Creator join with one-shot vouchers consumed once in MySQL.",
-      "priv.share": "Share modes",
-      "priv.public": "Public — plaintext payload on Store",
-      "priv.me": "Me / private — ECIES to owner key",
-      "priv.followers": "Followers — PRE encapsulate + rekey",
-      "priv.footnote": "Central holds rekey index · Store holds ciphertext",
-      "chat.kicker": "Messaging",
-      "chat.title": "E2E chat in two modes.",
-      "chat.copy":
-        "Central never relays message bodies. Online peers talk over WebRTC; offline messages reuse the encrypted file path on Store with N-of-M placement and participant-only access.",
-      "chat.online.t": "Online — P2P",
-      "chat.online.p":
-        "Both users publish presence. Central exchanges WebRTC signaling only. Encrypted packets move peer-to-peer; the API stays out of the content path.",
-      "chat.offline.t": "Offline — Store files",
-      "chat.offline.p":
-        "Each message is one encrypted file on Store. Central indexes conversation metadata. Read/write is limited to conversation participants (signed + IDOR checks).",
-      "eco.kicker": "Ecosystem",
-      "eco.title": "Specialized parts, clear boundaries.",
-      "eco.copy":
-        "Every component has one job. The coordination plane is Central; the data plane is Store; consensus work lands on Block Creators; crypto lives in Core and the app.",
-      "eco.app.p":
-        "Flutter client: identity, encryption, N-of-M upload orchestration, feed, chat, and signed calls to Central.",
-      "eco.api.p":
-        "MySQL-backed registry for users, follows, stored-file index, PRE rekeys, Store discovery, tx queue, and chat presence/signaling.",
-      "eco.store.p":
-        "Hold encrypted metadata and blocks. Serve timelines and file downloads. Never receive content keys for private/PRE posts.",
-      "eco.blocker.p":
-        "Accepts storage operations after verifying Central’s signed selection decision; pulls work with InternalApi auth.",
-      "eco.core.p":
-        "Umbral PRE native stack (Rust FFI) shared by app and services for encapsulate / rekey / decapsulate.",
-      "eco.user.p":
-        ".NET client helpers for signing, file workflows, and PRE-backed sharing outside the mobile app.",
-      "nodes.kicker": "Operators",
-      "nodes.title": "Grow the network by running a node.",
-      "nodes.copy":
-        "Join with a one-shot voucher. Store nodes expand encrypted capacity and N-of-M durability. Block Creators process verified storage operations under Central’s signed decision.",
-      "nodes.store": "Register with STORE_VOUCHER, expose upload/download APIs, validate PRE tokens via Central.",
-      "nodes.blocker":
-        "Register with VOUCHER, verify decision signatures, accept selected transactions into the mempool.",
-      "nodes.open": "Open source",
-      "nodes.back": "Back to architecture",
-      "nodes.map": "Default local map",
-      "nodes.rep": "Replication factor default: 2",
-      "cta.title": "Build social software that cannot read you.",
+        "Think of it like sealing a letter before you send it. Your device locks the content; only the people you allow can open it. The network moves sealed packages — it does not hold the letter opener.",
+      "priv.l1.t": "No silent snooping",
+      "priv.l1.p":
+        "Private posts and chats are not open to staff, advertisers, or “recommendation engines”.",
+      "priv.l2.t": "Your account travels with you",
+      "priv.l2.p":
+        "You keep a recovery phrase. Lose a phone, keep your identity — without begging a support team.",
+      "priv.l3.t": "Built for people first",
+      "priv.l3.p":
+        "The tech is under the hood. You just post, follow, and talk — with stronger defaults.",
+      "priv.panel.kicker": "Simple idea",
+      "priv.panel.title": "You → lock → share → friends unlock",
+      "priv.panel.copy":
+        "Everyone else on the path only sees a sealed package. That is the whole privacy story.",
+      "join.kicker": "Join the network",
+      "join.title": "Start as a user. Shape what comes next.",
+      "join.copy":
+        "Deltanium grows with real people — not empty profiles. Create your account, invite friends, and help set the tone of a kinder, freer social space.",
+      "join.s1": "Create your identity on the app — keys stay on your device.",
+      "join.s2": "Follow friends, publish your first post, try a private chat.",
+      "join.s3": "Invite someone you trust. The network gets better together.",
+      "join.cta1": "Request early access",
+      "join.cta2": "Follow the project",
+      "join.note":
+        "Want to help run storage or secure the network later? You can — after you are part of the community as a user.",
+      "cta.title": "Come for the people. Stay for the privacy.",
       "cta.copy":
-        "Start from the architecture: client keys, N-of-M ciphertext, Central as index. The product surface stays familiar — the trust model does not.",
-      "cta.review": "Review the path",
-      "cta.operate": "Operate a node",
-      "footer.eco": "Ecosystem",
-      "lang.switch": "Language",
+        "Deltanium is social media that treats you like an owner — not a product. Join the network and bring someone with you.",
+      "cta.review": "Join now",
+      "cta.operate": "See what you can do",
+      "footer.join": "Join",
     },
     vi: {
-      "meta.title": "Deltanium | Mã hóa cục bộ. Index tập trung.",
+      "meta.title": "Deltanium | Mạng xã hội thuộc về bạn",
       "meta.desc":
-        "Mạng xã hội phi tập trung với ECIES/Umbral PRE phía client, bản sao Store N-of-M, và Central API chỉ index — không giữ plaintext.",
-      "nav.architecture": "Kiến trúc",
-      "nav.privacy": "Bảo mật",
-      "nav.chat": "Chat",
-      "nav.ecosystem": "Hệ sinh thái",
-      "nav.nodes": "Node",
-      "nav.run": "Chạy một node",
-      "hero.line": "Mã hóa cục bộ. Index tập trung. Nhân bản trên Store.",
+        "Deltanium là mạng xã hội nơi bạn giữ chìa khóa. Đăng bài, theo dõi và chat mà không đánh đổi quyền riêng tư.",
+      "nav.why": "Vì sao Deltanium",
+      "nav.features": "Bạn làm được gì",
+      "nav.privacy": "Riêng tư của bạn",
+      "nav.join": "Tham gia",
+      "nav.cta": "Tham gia mạng",
+      "hero.line": "Đời sống xã hội của bạn — không bán quyền riêng tư.",
       "hero.sub":
-        "Mạng xã hội phi tập trung: app giữ khóa, Store giữ ciphertext, Central API không bao giờ thấy plaintext của bạn.",
-      "hero.cta1": "Xem cách hoạt động",
-      "hero.cta2": "Hệ sinh thái",
-      "diagram.centralSub": "index · registry · signaling",
-      "diagram.cipher": "ciphertext",
-      "diagram.replica": "bản sao N-of-M",
-      "diagram.register": "register-replicas",
-      "diagram.decision": "quyết định đã ký",
-      "arch.kicker": "Luồng bài & file",
-      "arch.title": "App điều phối. Central chỉ index.",
-      "arch.copy":
-        "Nội dung được mã hóa trên thiết bị, đặt full replica trên N Store, rồi đăng ký bằng placement index đã ký. Central API lo danh tính, policy và discovery — không lưu media.",
-      "arch.s1.t": "Mã hóa phía client",
-      "arch.s1.p":
-        "Bài và file được niêm phong trong app Flutter bằng ECIES (riêng tư) hoặc Umbral PRE (followers). Bài public vẫn đọc được; nội dung riêng không rời máy dưới dạng plaintext.",
-      "arch.s2.t": "Đặt Store N-of-M",
-      "arch.s2.p":
-        "App lấy danh sách Store qua storenode/list, upload cùng ciphertext lên N node (mặc định REPLICATION_FACTOR=2). Full replica — MVP không dùng DHT sharding.",
-      "arch.s3.t": "register-replicas đã ký",
-      "arch.s3.p":
-        "Placement được index bằng POST /api/storedfile/register-replicas với SignatureAuth. Cùng fileId, nhiều storeNodeId — Central lưu bản đồ, không lưu bytes.",
-      "arch.s4.t": "Rekey followers (PRE)",
-      "arch.s4.p":
-        "Khi chia sẻ cho followers, author tạo rekey phía client và upload batch đã ký. Follower lấy vật liệu transform; Store xác thực PRE token qua Central bằng internal service token.",
-      "priv.kicker": "Mô hình bảo mật",
-      "priv.title": "Khóa ở client. Giảm tin cậy trên đường truyền.",
+        "Đăng bài, theo dõi bạn bè và chat trên mạng thuộc về bạn. Khóa nằm trên máy bạn. Chúng tôi không đọc nội dung riêng tư.",
+      "hero.cta1": "Trở thành người dùng",
+      "hero.cta2": "Vì sao quan trọng",
+      "visual.name": "Bạn",
+      "visual.post": "Chia sẻ cuối tuần yên ả — chỉ với người mình chọn.",
+      "visual.seal": "Chỉ bạn giữ chìa khóa",
+      "visual.friend": "Một người bạn",
+      "visual.chat": "Chat riêng. Đầu cuối. Không quảng cáo chen vào.",
+      "why.kicker": "Vì sao đổi",
+      "why.title": "Mạng xã hội không nên sở hữu cuộc sống của bạn.",
+      "why.copy":
+        "Nền tảng lớn theo dõi, xếp hạng và kiếm tiền từ mọi lần cuộn. Deltanium được xây để tài khoản, bài viết và hội thoại thuộc về bạn — không phải bảng điều khiển của công ty.",
+      "why.p1.t": "Bạn giữ chìa khóa",
+      "why.p1.p":
+        "Danh tính bắt đầu trên thiết bị của bạn. Không ai mạo danh hay lặng lẽ mở bài riêng tư của bạn.",
+      "why.p2.t": "Riêng tư nghĩa là riêng tư",
+      "why.p2.p":
+        "Chia sẻ với mọi người, với người theo dõi, hoặc chỉ mình bạn. Nội dung riêng vẫn được niêm phong — kể cả với mạng lưu trữ nó.",
+      "why.p3.t": "Mạng do bạn cùng nuôi",
+      "why.p3.p":
+        "Mỗi người mới làm cộng đồng mạnh hơn. Hãy tham gia như người dùng hôm nay; sau này muốn góp vận hành thì vẫn được.",
+      "feat.kicker": "Dùng hàng ngày",
+      "feat.title": "Những gì bạn quen ở mạng xã hội — làm theo cách khác.",
+      "feat.f1.t": "Đăng bài & theo dõi",
+      "feat.f1.p":
+        "Chia sẻ khoảnh khắc với người quan trọng. Theo dõi người bạn tin. Feed vẫn là của bạn.",
+      "feat.f2.t": "Chat thoải mái",
+      "feat.f2.p":
+        "Nói chuyện khi cả hai online, hoặc để lại tin nhắn. Hội thoại ở lại giữa các bạn.",
+      "feat.f3.t": "Chọn ai được xem",
+      "feat.f3.p":
+        "Công khai khi cần lan tỏa. Chỉ followers khi muốn vòng tròn nhỏ. Riêng tư khi chỉ dành cho bạn.",
+      "priv.kicker": "Yên tâm",
+      "priv.title": "Chúng tôi không đọc được điều bạn khóa lại.",
       "priv.copy":
-        "Request thay đổi trạng thái được ký bằng khóa user. Cửa sổ replay ngắn. Gọi dịch vụ nhạy cảm giữa Store/Blocker và Central dùng internal token — không dùng credential user.",
-      "priv.sig": "Method + path + timestamp + hash body. Header: X-User-PubKey, X-Timestamp, X-Signature.",
-      "priv.pre": "Nội dung chỉ followers được re-encrypt cho người nhận mà Store không có content key.",
-      "priv.internal": "Validate token Store và tx pull của Blocker cần X-Internal-Token.",
-      "priv.voucher": "Store và Block Creator tham gia bằng voucher one-shot, consume một lần trên MySQL.",
-      "priv.share": "Chế độ chia sẻ",
-      "priv.public": "Public — payload plaintext trên Store",
-      "priv.me": "Me / riêng tư — ECIES tới khóa chủ",
-      "priv.followers": "Followers — PRE encapsulate + rekey",
-      "priv.footnote": "Central giữ index rekey · Store giữ ciphertext",
-      "chat.kicker": "Nhắn tin",
-      "chat.title": "Chat E2E với hai chế độ.",
-      "chat.copy":
-        "Central không relay nội dung tin. Online dùng WebRTC; offline tái sử dụng đường file mã hóa trên Store với N-of-M và chỉ participant được truy cập.",
-      "chat.online.t": "Online — P2P",
-      "chat.online.p":
-        "Hai user publish presence. Central chỉ trao đổi signaling WebRTC. Gói mã hóa đi peer-to-peer; API không nằm trên đường nội dung.",
-      "chat.offline.t": "Offline — file trên Store",
-      "chat.offline.p":
-        "Mỗi tin là một file mã hóa trên Store. Central index metadata hội thoại. Đọc/ghi giới hạn participant (ký + kiểm tra IDOR).",
-      "eco.kicker": "Hệ sinh thái",
-      "eco.title": "Mỗi phần một việc, ranh giới rõ.",
-      "eco.copy":
-        "Mặt điều phối là Central; mặt dữ liệu là Store; đồng thuận thuộc Block Creator; crypto nằm ở Core và app.",
-      "eco.app.p":
-        "Client Flutter: danh tính, mã hóa, điều phối upload N-of-M, feed, chat, và gọi Central có chữ ký.",
-      "eco.api.p":
-        "Registry MySQL: user, follow, index file, PRE rekey, discovery Store, hàng đợi tx, presence/signaling chat.",
-      "eco.store.p":
-        "Giữ metadata và block đã mã hóa. Phục vụ timeline và tải file. Không nhận content key của bài riêng/PRE.",
-      "eco.blocker.p":
-        "Nhận storage operation sau khi xác minh quyết định đã ký của Central; kéo việc bằng InternalApi.",
-      "eco.core.p":
-        "Stack Umbral PRE native (Rust FFI) dùng chung cho app và dịch vụ: encapsulate / rekey / decapsulate.",
-      "eco.user.p":
-        "Thư viện .NET hỗ trợ ký, luồng file, và chia sẻ PRE ngoài mobile app.",
-      "nodes.kicker": "Vận hành",
-      "nodes.title": "Mở rộng mạng bằng cách chạy node.",
-      "nodes.copy":
-        "Tham gia bằng voucher one-shot. Store tăng dung lượng mã hóa và độ bền N-of-M. Block Creator xử lý storage operation đã được Central ký chọn.",
-      "nodes.store": "Đăng ký bằng STORE_VOUCHER, mở API upload/download, validate PRE token qua Central.",
-      "nodes.blocker":
-        "Đăng ký bằng VOUCHER, xác minh chữ ký quyết định, nhận tx được chọn vào mempool.",
-      "nodes.open": "Mã nguồn mở",
-      "nodes.back": "Về kiến trúc",
-      "nodes.map": "Sơ đồ local mặc định",
-      "nodes.rep": "Hệ số nhân bản mặc định: 2",
-      "cta.title": "Xây mạng xã hội không đọc được bạn.",
+        "Giống như niêm phong lá thư trước khi gửi. Máy bạn khóa nội dung; chỉ người bạn cho phép mới mở được. Mạng chỉ chuyển gói đã niêm — không giữ dao mở thư.",
+      "priv.l1.t": "Không soi lén",
+      "priv.l1.p":
+        "Bài và chat riêng không mở cho nhân viên, quảng cáo hay “máy gợi ý”.",
+      "priv.l2.t": "Tài khoản đi cùng bạn",
+      "priv.l2.p":
+        "Bạn giữ cụm từ khôi phục. Mất máy vẫn giữ danh tính — không phải cầu xin bộ phận hỗ trợ.",
+      "priv.l3.t": "Ưu tiên con người",
+      "priv.l3.p":
+        "Công nghệ nằm phía dưới. Bạn chỉ cần đăng, theo dõi và nói chuyện — với mặc định an toàn hơn.",
+      "priv.panel.kicker": "Ý tưởng đơn giản",
+      "priv.panel.title": "Bạn → khóa → chia sẻ → bạn bè mở",
+      "priv.panel.copy":
+        "Mọi người khác trên đường đi chỉ thấy gói đã niêm. Đó là toàn bộ câu chuyện riêng tư.",
+      "join.kicker": "Tham gia mạng",
+      "join.title": "Bắt đầu như người dùng. Cùng định hình phía sau.",
+      "join.copy":
+        "Deltanium lớn lên bằng người thật — không phải hồ sơ trống. Tạo tài khoản, mời bạn bè, và cùng tạo không gian xã hội tử tế hơn, tự do hơn.",
+      "join.s1": "Tạo danh tính trên app — khóa nằm trên máy bạn.",
+      "join.s2": "Theo dõi bạn bè, đăng bài đầu tiên, thử chat riêng.",
+      "join.s3": "Mời một người bạn tin. Mạng tốt hơn khi có thêm bạn.",
+      "join.cta1": "Xin early access",
+      "join.cta2": "Theo dõi dự án",
+      "join.note":
+        "Muốn góp chạy lưu trữ hay bảo vệ mạng sau này? Được — sau khi bạn đã là một phần cộng đồng với tư cách người dùng.",
+      "cta.title": "Đến vì con người. Ở lại vì riêng tư.",
       "cta.copy":
-        "Bắt đầu từ kiến trúc: khóa ở client, ciphertext N-of-M, Central là index. Giao diện quen — mô hình tin cậy thì không.",
-      "cta.review": "Xem lại luồng",
-      "cta.operate": "Vận hành node",
-      "footer.eco": "Hệ sinh thái",
-      "lang.switch": "Ngôn ngữ",
+        "Deltanium là mạng xã hội đối xử với bạn như chủ nhân — không phải sản phẩm. Tham gia và dẫn thêm một người nữa.",
+      "cta.review": "Tham gia ngay",
+      "cta.operate": "Xem bạn làm được gì",
+      "footer.join": "Tham gia",
     },
   };
 
@@ -197,11 +165,9 @@
       const key = el.getAttribute("data-i18n");
       if (pack[key] != null) el.textContent = pack[key];
     });
-    const title = pack["meta.title"];
-    const desc = pack["meta.desc"];
-    if (title) document.title = title;
+    if (pack["meta.title"]) document.title = pack["meta.title"];
     const meta = document.querySelector('meta[name="description"]');
-    if (meta && desc) meta.setAttribute("content", desc);
+    if (meta && pack["meta.desc"]) meta.setAttribute("content", pack["meta.desc"]);
 
     document.querySelectorAll("[data-lang]").forEach((btn) => {
       const active = btn.getAttribute("data-lang") === lang;
