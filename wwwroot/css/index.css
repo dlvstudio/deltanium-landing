@@ -115,6 +115,48 @@ img {
     color: var(--sand-bright);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(12, 18, 16, 0.55);
+}
+
+.lang-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0.25rem 0.3rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    line-height: 0;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.lang-btn:hover {
+    opacity: 0.9;
+}
+
+.lang-btn.is-active {
+    opacity: 1;
+    background: rgba(214, 186, 140, 0.16);
+}
+
+.lang-btn svg {
+    display: block;
+    border-radius: 2px;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -153,41 +195,50 @@ img {
     color: var(--sand-bright);
 }
 
-/* Hero: one composition */
+/* Hero: copy + diagram side by side (no overlap) */
 .hero {
     min-height: 100vh;
-    display: grid;
-    align-items: end;
-    padding: 7rem 0 4rem;
+    display: flex;
+    align-items: center;
+    padding: 7.5rem 0 4rem;
     position: relative;
     overflow: hidden;
 }
 
-.hero-plane {
+.hero-glow {
     position: absolute;
     inset: 0;
     z-index: 0;
+    pointer-events: none;
     background:
-        linear-gradient(115deg, rgba(12, 18, 16, 0.92) 0%, rgba(12, 18, 16, 0.55) 42%, rgba(12, 18, 16, 0.2) 100%),
-        radial-gradient(ellipse at 70% 40%, rgba(61, 107, 82, 0.45), transparent 55%),
-        radial-gradient(ellipse at 90% 80%, rgba(214, 186, 140, 0.18), transparent 40%);
+        radial-gradient(ellipse at 75% 35%, rgba(61, 107, 82, 0.35), transparent 55%),
+        radial-gradient(ellipse at 90% 80%, rgba(214, 186, 140, 0.14), transparent 40%);
 }
 
-.hero-plane svg {
-    position: absolute;
-    right: -4%;
-    top: 12%;
-    width: min(62vw, 720px);
-    height: auto;
-    opacity: 0.9;
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.hero-copy {
+    min-width: 0;
+    max-width: 34rem;
+}
+
+.hero-diagram {
+    min-width: 0;
+    border: 1px solid var(--line);
+    background: linear-gradient(160deg, rgba(26, 40, 34, 0.55), rgba(12, 18, 16, 0.35));
+    padding: clamp(0.75rem, 2vw, 1.25rem);
     animation: floatSoft 9s ease-in-out infinite;
 }
 
-.hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 34rem;
-    padding-bottom: 1rem;
+.hero-diagram svg {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .hero-brand {
@@ -475,20 +526,27 @@ section.block {
 
     .split,
     .modes,
-    .roles {
+    .roles,
+    .hero-grid {
         grid-template-columns: 1fr;
     }
 
     .hero {
-        align-items: center;
+        align-items: flex-start;
         padding-top: 6.5rem;
+        min-height: auto;
     }
 
-    .hero-plane svg {
-        opacity: 0.28;
-        width: 120%;
-        right: -25%;
-        top: 8%;
+    .hero-diagram {
+        order: -1;
+        max-width: 28rem;
+        margin-inline: auto;
+        animation: none;
+    }
+
+    .nav-actions .btn-primary {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
     }
 
     .flow-step {

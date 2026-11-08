@@ -19,89 +19,111 @@
             <a class="brand" href="#">Deltanium</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#architecture">Architecture</a></li>
-                    <li><a href="#privacy">Privacy</a></li>
-                    <li><a href="#chat">Chat</a></li>
-                    <li><a href="#ecosystem">Ecosystem</a></li>
-                    <li><a href="#nodes">Nodes</a></li>
+                    <li><a href="#architecture" data-i18n="nav.architecture">Architecture</a></li>
+                    <li><a href="#privacy" data-i18n="nav.privacy">Privacy</a></li>
+                    <li><a href="#chat" data-i18n="nav.chat">Chat</a></li>
+                    <li><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a></li>
+                    <li><a href="#nodes" data-i18n="nav.nodes">Nodes</a></li>
                 </ul>
             </nav>
-            <a href="#nodes" class="btn btn-primary">Run a node</a>
+            <div class="nav-actions">
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-lang="vi" title="Tiếng Việt" aria-label="Tiếng Việt">
+                        <svg viewBox="0 0 30 20" width="28" height="18" aria-hidden="true">
+                            <rect width="30" height="20" fill="#da251d"/>
+                            <polygon points="15,4 16.8,9.5 22.5,9.5 17.9,12.8 19.7,18.2 15,14.8 10.3,18.2 12.1,12.8 7.5,9.5 13.2,9.5" fill="#ff0"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English">
+                        <svg viewBox="0 0 60 30" width="28" height="18" aria-hidden="true">
+                            <rect width="60" height="30" fill="#012169"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/>
+                            <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
+                            <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
+                        </svg>
+                    </button>
+                </div>
+                <a href="#nodes" class="btn btn-primary" data-i18n="nav.run">Run a node</a>
+            </div>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-plane" aria-hidden="true">
-                <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="40" y="40" width="160" height="90" stroke="#d6ba8c" stroke-width="1.5" opacity="0.9"/>
-                    <text x="120" y="92" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="18">App</text>
-                    <path class="pulse-line" d="M200 85 H310" stroke="#6f9b7a" stroke-width="1.5"/>
-                    <rect x="310" y="40" width="200" height="90" stroke="#6f9b7a" stroke-width="1.5"/>
-                    <text x="410" y="78" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="16">Central API</text>
-                    <text x="410" y="102" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12">index · registry · signaling</text>
-                    <path class="pulse-line" d="M120 130 V210" stroke="#d6ba8c" stroke-width="1.5"/>
-                    <path class="pulse-line" d="M120 210 H250" stroke="#d6ba8c" stroke-width="1.5"/>
-                    <path class="pulse-line" d="M120 210 H40 V280 H250" stroke="#d6ba8c" stroke-width="1.5" opacity="0.7"/>
-                    <rect x="250" y="180" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
-                    <text x="325" y="212" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store A</text>
-                    <text x="325" y="232" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">ciphertext</text>
-                    <rect x="250" y="280" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
-                    <text x="325" y="312" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store B</text>
-                    <text x="325" y="332" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">N-of-M replica</text>
-                    <path class="pulse-line" d="M400 215 H480 V120" stroke="#6f9b7a" stroke-width="1.5"/>
-                    <path class="pulse-line" d="M400 315 H500 V130" stroke="#6f9b7a" stroke-width="1.5" opacity="0.75"/>
-                    <text x="560" y="200" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12">register-replicas</text>
-                    <rect x="520" y="360" width="160" height="80" stroke="#c4785a" stroke-width="1.5"/>
-                    <text x="600" y="398" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Block Creator</text>
-                    <text x="600" y="418" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">signed decision</text>
-                    <path class="pulse-line" d="M510 85 H600 V360" stroke="#c4785a" stroke-width="1.5" opacity="0.8"/>
-                </svg>
-            </div>
-            <div class="container hero-inner">
-                <h1 class="hero-brand">Deltanium<em>.</em></h1>
-                <p class="hero-line">Encrypt locally. Index centrally. Replicate across stores.</p>
-                <p class="hero-sub">A decentralized social network where the app holds the keys, Store nodes hold ciphertext, and Central API never sees your plaintext.</p>
-                <div class="hero-actions">
-                    <a href="#architecture" class="btn btn-primary">See how it works</a>
-                    <a href="#ecosystem" class="btn btn-ghost">Ecosystem</a>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1 class="hero-brand">Deltanium<em>.</em></h1>
+                    <p class="hero-line" data-i18n="hero.line">Encrypt locally. Index centrally. Replicate across stores.</p>
+                    <p class="hero-sub" data-i18n="hero.sub">A decentralized social network where the app holds the keys, Store nodes hold ciphertext, and Central API never sees your plaintext.</p>
+                    <div class="hero-actions">
+                        <a href="#architecture" class="btn btn-primary" data-i18n="hero.cta1">See how it works</a>
+                        <a href="#ecosystem" class="btn btn-ghost" data-i18n="hero.cta2">Ecosystem</a>
+                    </div>
+                </div>
+                <div class="hero-diagram" aria-hidden="true">
+                    <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="40" width="160" height="90" stroke="#d6ba8c" stroke-width="1.5" opacity="0.9"/>
+                        <text x="120" y="92" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="18">App</text>
+                        <path class="pulse-line" d="M200 85 H310" stroke="#6f9b7a" stroke-width="1.5"/>
+                        <rect x="310" y="40" width="200" height="90" stroke="#6f9b7a" stroke-width="1.5"/>
+                        <text x="410" y="78" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="16">Central API</text>
+                        <text x="410" y="102" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12" data-i18n="diagram.centralSub">index · registry · signaling</text>
+                        <path class="pulse-line" d="M120 130 V210" stroke="#d6ba8c" stroke-width="1.5"/>
+                        <path class="pulse-line" d="M120 210 H250" stroke="#d6ba8c" stroke-width="1.5"/>
+                        <path class="pulse-line" d="M120 210 H40 V280 H250" stroke="#d6ba8c" stroke-width="1.5" opacity="0.7"/>
+                        <rect x="250" y="180" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
+                        <text x="325" y="212" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store A</text>
+                        <text x="325" y="232" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11" data-i18n="diagram.cipher">ciphertext</text>
+                        <rect x="250" y="280" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
+                        <text x="325" y="312" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store B</text>
+                        <text x="325" y="332" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11" data-i18n="diagram.replica">N-of-M replica</text>
+                        <path class="pulse-line" d="M400 215 H480 V120" stroke="#6f9b7a" stroke-width="1.5"/>
+                        <path class="pulse-line" d="M400 315 H500 V130" stroke="#6f9b7a" stroke-width="1.5" opacity="0.75"/>
+                        <text x="560" y="200" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12" data-i18n="diagram.register">register-replicas</text>
+                        <rect x="520" y="360" width="160" height="80" stroke="#c4785a" stroke-width="1.5"/>
+                        <text x="600" y="398" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Block Creator</text>
+                        <text x="600" y="418" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11" data-i18n="diagram.decision">signed decision</text>
+                        <path class="pulse-line" d="M510 85 H600 V360" stroke="#c4785a" stroke-width="1.5" opacity="0.8"/>
+                    </svg>
                 </div>
             </div>
         </section>
 
         <section id="architecture" class="block">
             <div class="container">
-                <p class="block-kicker">Post &amp; file path</p>
-                <h2 class="block-title">App orchestrates. Central only indexes.</h2>
-                <p class="block-copy">Content is encrypted on-device, placed as full replicas on N Store nodes, then registered with a signed placement index. Central API coordinates identity, policy, and discovery — not media blobs.</p>
+                <p class="block-kicker" data-i18n="arch.kicker">Post &amp; file path</p>
+                <h2 class="block-title" data-i18n="arch.title">App orchestrates. Central only indexes.</h2>
+                <p class="block-copy" data-i18n="arch.copy">Content is encrypted on-device, placed as full replicas on N Store nodes, then registered with a signed placement index. Central API coordinates identity, policy, and discovery — not media blobs.</p>
 
                 <div class="flow">
                     <article class="flow-step">
                         <div class="flow-index">01</div>
                         <div>
-                            <h3>Client-side encryption</h3>
-                            <p>Posts and files are sealed in the Flutter app with ECIES (private/me) or Umbral PRE (followers). Public posts stay readable; private ones never leave the device as plaintext.</p>
+                            <h3 data-i18n="arch.s1.t">Client-side encryption</h3>
+                            <p data-i18n="arch.s1.p">Posts and files are sealed in the Flutter app with ECIES (private/me) or Umbral PRE (followers). Public posts stay readable; private ones never leave the device as plaintext.</p>
                         </div>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">02</div>
                         <div>
-                            <h3>N-of-M store placement</h3>
-                            <p>The app discovers Store nodes via <code>storenode/list</code>, then uploads the same ciphertext to N nodes (default <code>REPLICATION_FACTOR=2</code>). Full replicas — no DHT sharding in the MVP.</p>
+                            <h3 data-i18n="arch.s2.t">N-of-M store placement</h3>
+                            <p data-i18n="arch.s2.p">The app discovers Store nodes via storenode/list, then uploads the same ciphertext to N nodes (default REPLICATION_FACTOR=2). Full replicas — no DHT sharding in the MVP.</p>
                         </div>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">03</div>
                         <div>
-                            <h3>Signed register-replicas</h3>
-                            <p>Placement is indexed with <code>POST /api/storedfile/register-replicas</code> under SignatureAuth. Same <code>fileId</code>, multiple <code>storeNodeId</code> rows — Central stores the map, not the bytes.</p>
+                            <h3 data-i18n="arch.s3.t">Signed register-replicas</h3>
+                            <p data-i18n="arch.s3.p">Placement is indexed with POST /api/storedfile/register-replicas under SignatureAuth. Same fileId, multiple storeNodeId rows — Central stores the map, not the bytes.</p>
                         </div>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">04</div>
                         <div>
-                            <h3>Follower rekeys (PRE)</h3>
-                            <p>When sharing with followers, the author generates rekeys client-side and uploads them in a signed batch. Followers fetch transform material; Store validates PRE tokens through Central with an internal service token.</p>
+                            <h3 data-i18n="arch.s4.t">Follower rekeys (PRE)</h3>
+                            <p data-i18n="arch.s4.p">When sharing with followers, the author generates rekeys client-side and uploads them in a signed batch. Followers fetch transform material; Store validates PRE tokens through Central with an internal service token.</p>
                         </div>
                     </article>
                 </div>
@@ -111,38 +133,38 @@
         <section id="privacy" class="block">
             <div class="container split">
                 <div>
-                    <p class="block-kicker">Security model</p>
-                    <h2 class="block-title">Keys on the client. Trust minimized on the wire.</h2>
-                    <p class="block-copy">Requests that mutate state are signed with the user key. Replay windows are short. Sensitive service calls between Store/Blocker and Central use an internal token — not user credentials.</p>
+                    <p class="block-kicker" data-i18n="priv.kicker">Security model</p>
+                    <h2 class="block-title" data-i18n="priv.title">Keys on the client. Trust minimized on the wire.</h2>
+                    <p class="block-copy" data-i18n="priv.copy">Requests that mutate state are signed with the user key. Replay windows are short. Sensitive service calls between Store/Blocker and Central use an internal token — not user credentials.</p>
                     <ul class="plain-list">
                         <li>
                             <strong>SignatureAuth</strong>
-                            Method + path + timestamp + body hash. Headers: X-User-PubKey, X-Timestamp, X-Signature.
+                            <span data-i18n="priv.sig">Method + path + timestamp + body hash. Headers: X-User-PubKey, X-Timestamp, X-Signature.</span>
                         </li>
                         <li>
                             <strong>Umbral PRE</strong>
-                            Followers-only content is re-encrypted for recipients without giving Store the content key.
+                            <span data-i18n="priv.pre">Followers-only content is re-encrypted for recipients without giving Store the content key.</span>
                         </li>
                         <li>
                             <strong>InternalApi</strong>
-                            Store token validation and Blocker tx pull require X-Internal-Token.
+                            <span data-i18n="priv.internal">Store token validation and Blocker tx pull require X-Internal-Token.</span>
                         </li>
                         <li>
                             <strong>Atomic vouchers</strong>
-                            Store and Block Creator join with one-shot vouchers consumed once in MySQL.
+                            <span data-i18n="priv.voucher">Store and Block Creator join with one-shot vouchers consumed once in MySQL.</span>
                         </li>
                     </ul>
                 </div>
                 <aside class="diagram" aria-label="Encryption modes">
                     <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
-                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18">Share modes</text>
+                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18" data-i18n="priv.share">Share modes</text>
                         <rect x="20" y="60" width="380" height="52" fill="none" stroke="rgba(214,186,140,0.28)"/>
-                        <text x="36" y="92" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Public — plaintext payload on Store</text>
+                        <text x="36" y="92" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15" data-i18n="priv.public">Public — plaintext payload on Store</text>
                         <rect x="20" y="128" width="380" height="52" fill="none" stroke="rgba(214,186,140,0.28)"/>
-                        <text x="36" y="160" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Me / private — ECIES to owner key</text>
+                        <text x="36" y="160" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15" data-i18n="priv.me">Me / private — ECIES to owner key</text>
                         <rect x="20" y="196" width="380" height="52" fill="none" stroke="rgba(111,155,122,0.55)"/>
-                        <text x="36" y="228" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Followers — PRE encapsulate + rekey</text>
-                        <text x="20" y="290" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13">Central holds rekey index · Store holds ciphertext</text>
+                        <text x="36" y="228" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15" data-i18n="priv.followers">Followers — PRE encapsulate + rekey</text>
+                        <text x="20" y="290" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13" data-i18n="priv.footnote">Central holds rekey index · Store holds ciphertext</text>
                     </svg>
                 </aside>
             </div>
@@ -150,17 +172,17 @@
 
         <section id="chat" class="block">
             <div class="container">
-                <p class="block-kicker">Messaging</p>
-                <h2 class="block-title">E2E chat in two modes.</h2>
-                <p class="block-copy">Central never relays message bodies. Online peers talk over WebRTC; offline messages reuse the encrypted file path on Store with N-of-M placement and participant-only access.</p>
+                <p class="block-kicker" data-i18n="chat.kicker">Messaging</p>
+                <h2 class="block-title" data-i18n="chat.title">E2E chat in two modes.</h2>
+                <p class="block-copy" data-i18n="chat.copy">Central never relays message bodies. Online peers talk over WebRTC; offline messages reuse the encrypted file path on Store with N-of-M placement and participant-only access.</p>
                 <div class="modes">
                     <article class="mode">
-                        <h3>Online — P2P</h3>
-                        <p>Both users publish presence. Central exchanges WebRTC signaling only. Encrypted packets move peer-to-peer; the API stays out of the content path.</p>
+                        <h3 data-i18n="chat.online.t">Online — P2P</h3>
+                        <p data-i18n="chat.online.p">Both users publish presence. Central exchanges WebRTC signaling only. Encrypted packets move peer-to-peer; the API stays out of the content path.</p>
                     </article>
                     <article class="mode">
-                        <h3>Offline — Store files</h3>
-                        <p>Each message is one encrypted file on Store. Central indexes conversation metadata. Read/write is limited to conversation participants (signed + IDOR checks).</p>
+                        <h3 data-i18n="chat.offline.t">Offline — Store files</h3>
+                        <p data-i18n="chat.offline.p">Each message is one encrypted file on Store. Central indexes conversation metadata. Read/write is limited to conversation participants (signed + IDOR checks).</p>
                     </article>
                 </div>
             </div>
@@ -168,39 +190,39 @@
 
         <section id="ecosystem" class="block">
             <div class="container">
-                <p class="block-kicker">Ecosystem</p>
-                <h2 class="block-title">Specialized parts, clear boundaries.</h2>
-                <p class="block-copy">Every component has one job. The coordination plane is Central; the data plane is Store; consensus work lands on Block Creators; crypto lives in Core and the app.</p>
+                <p class="block-kicker" data-i18n="eco.kicker">Ecosystem</p>
+                <h2 class="block-title" data-i18n="eco.title">Specialized parts, clear boundaries.</h2>
+                <p class="block-copy" data-i18n="eco.copy">Every component has one job. The coordination plane is Central; the data plane is Store; consensus work lands on Block Creators; crypto lives in Core and the app.</p>
                 <div class="roles">
                     <article class="role">
                         <span class="tag">Client</span>
                         <h3>Deltanium App</h3>
-                        <p>Flutter client: identity, encryption, N-of-M upload orchestration, feed, chat, and signed calls to Central.</p>
+                        <p data-i18n="eco.app.p">Flutter client: identity, encryption, N-of-M upload orchestration, feed, chat, and signed calls to Central.</p>
                     </article>
                     <article class="role">
                         <span class="tag">Coordinator</span>
                         <h3>Central API</h3>
-                        <p>MySQL-backed registry for users, follows, stored-file index, PRE rekeys, Store discovery, tx queue, and chat presence/signaling.</p>
+                        <p data-i18n="eco.api.p">MySQL-backed registry for users, follows, stored-file index, PRE rekeys, Store discovery, tx queue, and chat presence/signaling.</p>
                     </article>
                     <article class="role">
                         <span class="tag">Data plane</span>
                         <h3>Store nodes</h3>
-                        <p>Hold encrypted metadata and blocks. Serve timelines and file downloads. Never receive content keys for private/PRE posts.</p>
+                        <p data-i18n="eco.store.p">Hold encrypted metadata and blocks. Serve timelines and file downloads. Never receive content keys for private/PRE posts.</p>
                     </article>
                     <article class="role">
                         <span class="tag">Consensus</span>
                         <h3>Block Creator</h3>
-                        <p>Accepts storage operations after verifying Central’s signed selection decision; pulls work with InternalApi auth.</p>
+                        <p data-i18n="eco.blocker.p">Accepts storage operations after verifying Central’s signed selection decision; pulls work with InternalApi auth.</p>
                     </article>
                     <article class="role">
                         <span class="tag">Crypto</span>
                         <h3>Deltanium Core</h3>
-                        <p>Umbral PRE native stack (Rust FFI) shared by app and services for encapsulate / rekey / decapsulate.</p>
+                        <p data-i18n="eco.core.p">Umbral PRE native stack (Rust FFI) shared by app and services for encapsulate / rekey / decapsulate.</p>
                     </article>
                     <article class="role">
                         <span class="tag">Library</span>
                         <h3>Deltanium User</h3>
-                        <p>.NET client helpers for signing, file workflows, and PRE-backed sharing outside the mobile app.</p>
+                        <p data-i18n="eco.user.p">.NET client helpers for signing, file workflows, and PRE-backed sharing outside the mobile app.</p>
                     </article>
                 </div>
             </div>
@@ -209,43 +231,43 @@
         <section id="nodes" class="block">
             <div class="container split">
                 <div>
-                    <p class="block-kicker">Operators</p>
-                    <h2 class="block-title">Grow the network by running a node.</h2>
-                    <p class="block-copy">Join with a one-shot voucher. Store nodes expand encrypted capacity and N-of-M durability. Block Creators process verified storage operations under Central’s signed decision.</p>
+                    <p class="block-kicker" data-i18n="nodes.kicker">Operators</p>
+                    <h2 class="block-title" data-i18n="nodes.title">Grow the network by running a node.</h2>
+                    <p class="block-copy" data-i18n="nodes.copy">Join with a one-shot voucher. Store nodes expand encrypted capacity and N-of-M durability. Block Creators process verified storage operations under Central’s signed decision.</p>
                     <ul class="plain-list">
                         <li>
                             <strong>Store node</strong>
-                            Register with STORE_VOUCHER, expose upload/download APIs, validate PRE tokens via Central.
+                            <span data-i18n="nodes.store">Register with STORE_VOUCHER, expose upload/download APIs, validate PRE tokens via Central.</span>
                         </li>
                         <li>
                             <strong>Block Creator</strong>
-                            Register with VOUCHER, verify decision signatures, accept selected transactions into the mempool.
+                            <span data-i18n="nodes.blocker">Register with VOUCHER, verify decision signatures, accept selected transactions into the mempool.</span>
                         </li>
                     </ul>
                     <div class="hero-actions" style="margin-top: 2rem;">
-                        <a href="https://github.com/dlvstudio" class="btn btn-primary">Open source</a>
-                        <a href="#architecture" class="btn btn-ghost">Back to architecture</a>
+                        <a href="https://github.com/dlvstudio" class="btn btn-primary" data-i18n="nodes.open">Open source</a>
+                        <a href="#architecture" class="btn btn-ghost" data-i18n="nodes.back">Back to architecture</a>
                     </div>
                 </div>
                 <aside class="diagram" aria-label="Default local ports">
                     <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
-                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18">Default local map</text>
+                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18" data-i18n="nodes.map">Default local map</text>
                         <text x="20" y="90" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Central API · :5002 · MySQL</text>
                         <text x="20" y="130" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Store · :5000 / :5001</text>
                         <text x="20" y="170" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Block Creator · ~:5003</text>
                         <text x="20" y="210" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">App · CENTRAL_API_BASE …/api</text>
-                        <text x="20" y="260" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13">Replication factor default: 2</text>
+                        <text x="20" y="260" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13" data-i18n="nodes.rep">Replication factor default: 2</text>
                     </svg>
                 </aside>
             </div>
         </section>
 
         <section class="container cta">
-            <h2>Build social software that cannot read you.</h2>
-            <p>Start from the architecture: client keys, N-of-M ciphertext, Central as index. The product surface stays familiar — the trust model does not.</p>
+            <h2 data-i18n="cta.title">Build social software that cannot read you.</h2>
+            <p data-i18n="cta.copy">Start from the architecture: client keys, N-of-M ciphertext, Central as index. The product surface stays familiar — the trust model does not.</p>
             <div class="hero-actions">
-                <a href="#architecture" class="btn btn-primary">Review the path</a>
-                <a href="#nodes" class="btn btn-ghost">Operate a node</a>
+                <a href="#architecture" class="btn btn-primary" data-i18n="cta.review">Review the path</a>
+                <a href="#nodes" class="btn btn-ghost" data-i18n="cta.operate">Operate a node</a>
             </div>
         </section>
     </main>
@@ -255,11 +277,12 @@
             <div>Deltanium · 2026</div>
             <div style="display:flex; gap:1.5rem;">
                 <a href="https://github.com/dlvstudio">GitHub</a>
-                <a href="#ecosystem">Ecosystem</a>
+                <a href="#ecosystem" data-i18n="footer.eco">Ecosystem</a>
             </div>
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script>
         const steps = document.querySelectorAll('.flow-step');
         if ('IntersectionObserver' in window) {
