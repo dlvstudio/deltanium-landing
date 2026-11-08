@@ -4,238 +4,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deltanium | Own Your Social Future</title>
+    <title>Deltanium | Encrypt locally. Index centrally.</title>
     <meta name="description"
-        content="A decentralized social media platform powered by blockchain. Secure, private, and owned by you.">
+        content="Decentralized social network with client-side ECIES/Umbral PRE, N-of-M encrypted store replicas, and a Central API that only indexes — never holds your plaintext.">
     <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header class="glass" style="position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1.5rem 0;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="logo"
-                style="font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                <span
-                    style="background: var(--primary-tan); color: var(--bg-dark); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">D</span>
-                Deltanium
-            </div>
-            <nav style="display: flex; gap: 2rem;" class="desktop-only">
-                <a href="#features"
-                    style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Features</a>
-                <a href="#ecosystem"
-                    style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Ecosystem</a>
+    <header class="site-header">
+        <div class="container nav-row">
+            <a class="brand" href="#">Deltanium</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="#chat">Chat</a></li>
+                    <li><a href="#ecosystem">Ecosystem</a></li>
+                    <li><a href="#nodes">Nodes</a></li>
+                </ul>
             </nav>
-            <a href="#" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Launch App</a>
+            <a href="#nodes" class="btn btn-primary">Run a node</a>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="container">
-                <div class="hero-content fade-in">
-                    <h1 class="hero-title">Own Your <span class="gradient-text">Social Future</span></h1>
-                    <p class="hero-subtitle">The first truly decentralized social media network where your data belongs
-                        to you. No censorship, no tracking, complete privacy.</p>
-                    <div class="hero-actions">
-                        <a href="#" class="btn btn-primary">Get Started</a>
-                        <a href="#features" class="btn"
-                            style="color: var(--text-primary); margin-left: 1rem; border: 1px solid rgba(255,255,255,0.2);">Explore
-                            Features</a>
-                    </div>
+            <div class="hero-plane" aria-hidden="true">
+                <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="40" width="160" height="90" stroke="#d6ba8c" stroke-width="1.5" opacity="0.9"/>
+                    <text x="120" y="92" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="18">App</text>
+                    <path class="pulse-line" d="M200 85 H310" stroke="#6f9b7a" stroke-width="1.5"/>
+                    <rect x="310" y="40" width="200" height="90" stroke="#6f9b7a" stroke-width="1.5"/>
+                    <text x="410" y="78" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="16">Central API</text>
+                    <text x="410" y="102" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12">index · registry · signaling</text>
+                    <path class="pulse-line" d="M120 130 V210" stroke="#d6ba8c" stroke-width="1.5"/>
+                    <path class="pulse-line" d="M120 210 H250" stroke="#d6ba8c" stroke-width="1.5"/>
+                    <path class="pulse-line" d="M120 210 H40 V280 H250" stroke="#d6ba8c" stroke-width="1.5" opacity="0.7"/>
+                    <rect x="250" y="180" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
+                    <text x="325" y="212" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store A</text>
+                    <text x="325" y="232" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">ciphertext</text>
+                    <rect x="250" y="280" width="150" height="70" stroke="#d6ba8c" stroke-width="1.5"/>
+                    <text x="325" y="312" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Store B</text>
+                    <text x="325" y="332" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">N-of-M replica</text>
+                    <path class="pulse-line" d="M400 215 H480 V120" stroke="#6f9b7a" stroke-width="1.5"/>
+                    <path class="pulse-line" d="M400 315 H500 V130" stroke="#6f9b7a" stroke-width="1.5" opacity="0.75"/>
+                    <text x="560" y="200" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="12">register-replicas</text>
+                    <rect x="520" y="360" width="160" height="80" stroke="#c4785a" stroke-width="1.5"/>
+                    <text x="600" y="398" text-anchor="middle" fill="#f3efe6" font-family="Syne, sans-serif" font-size="15">Block Creator</text>
+                    <text x="600" y="418" text-anchor="middle" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="11">signed decision</text>
+                    <path class="pulse-line" d="M510 85 H600 V360" stroke="#c4785a" stroke-width="1.5" opacity="0.8"/>
+                </svg>
+            </div>
+            <div class="container hero-inner">
+                <h1 class="hero-brand">Deltanium<em>.</em></h1>
+                <p class="hero-line">Encrypt locally. Index centrally. Replicate across stores.</p>
+                <p class="hero-sub">A decentralized social network where the app holds the keys, Store nodes hold ciphertext, and Central API never sees your plaintext.</p>
+                <div class="hero-actions">
+                    <a href="#architecture" class="btn btn-primary">See how it works</a>
+                    <a href="#ecosystem" class="btn btn-ghost">Ecosystem</a>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="features">
+        <section id="architecture" class="block">
             <div class="container">
-                <div style="text-align: center; max-width: 600px; margin: 0 auto 4rem;">
-                    <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Built for <span
-                            class="gradient-text">Privacy</span></h2>
-                    <p style="color: var(--text-secondary); font-size: 1.25rem;">Security and ownership are at the core
-                        of everything we build.</p>
-                </div>
+                <p class="block-kicker">Post &amp; file path</p>
+                <h2 class="block-title">App orchestrates. Central only indexes.</h2>
+                <p class="block-copy">Content is encrypted on-device, placed as full replicas on N Store nodes, then registered with a signed placement index. Central API coordinates identity, policy, and discovery — not media blobs.</p>
 
-                <div class="features-grid">
-                    <div class="feature-card glass">
-                        <div class="feature-icon">🛡️</div>
-                        <h3 class="feature-title">Zero-Knowledge</h3>
-                        <p class="feature-description">Client-side encryption ensures that only you and your intended
-                            audience can see your content.</p>
-                    </div>
-                    <div class="feature-card glass">
-                        <div class="feature-icon">⛓️</div>
-                        <h3 class="feature-title">Blockchain Identity</h3>
-                        <p class="feature-description">Decentralized identities mean no central authority can ban or
-                            shadow-ban your account.</p>
-                    </div>
-                    <div class="feature-card glass">
-                        <div class="feature-icon">📦</div>
-                        <h3 class="feature-title">Distributed Store</h3>
-                        <p class="feature-description">Your files are encrypted and distributed across a secure network
-                            of storage nodes.</p>
-                    </div>
+                <div class="flow">
+                    <article class="flow-step">
+                        <div class="flow-index">01</div>
+                        <div>
+                            <h3>Client-side encryption</h3>
+                            <p>Posts and files are sealed in the Flutter app with ECIES (private/me) or Umbral PRE (followers). Public posts stay readable; private ones never leave the device as plaintext.</p>
+                        </div>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">02</div>
+                        <div>
+                            <h3>N-of-M store placement</h3>
+                            <p>The app discovers Store nodes via <code>storenode/list</code>, then uploads the same ciphertext to N nodes (default <code>REPLICATION_FACTOR=2</code>). Full replicas — no DHT sharding in the MVP.</p>
+                        </div>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">03</div>
+                        <div>
+                            <h3>Signed register-replicas</h3>
+                            <p>Placement is indexed with <code>POST /api/storedfile/register-replicas</code> under SignatureAuth. Same <code>fileId</code>, multiple <code>storeNodeId</code> rows — Central stores the map, not the bytes.</p>
+                        </div>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">04</div>
+                        <div>
+                            <h3>Follower rekeys (PRE)</h3>
+                            <p>When sharing with followers, the author generates rekeys client-side and uploads them in a signed batch. Followers fetch transform material; Store validates PRE tokens through Central with an internal service token.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="nodes" class="nodes">
-            <div class="container">
-                <div class="grid-2">
-                    <div>
-                        <h2 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Secure the <span
-                                class="gradient-text">Network</span></h2>
-                        <p style="color: var(--text-secondary); font-size: 1.25rem;">Deltanium grows through its
-                            community. Run a node, secure the future, and earn rewards.</p>
+        <section id="privacy" class="block">
+            <div class="container split">
+                <div>
+                    <p class="block-kicker">Security model</p>
+                    <h2 class="block-title">Keys on the client. Trust minimized on the wire.</h2>
+                    <p class="block-copy">Requests that mutate state are signed with the user key. Replay windows are short. Sensitive service calls between Store/Blocker and Central use an internal token — not user credentials.</p>
+                    <ul class="plain-list">
+                        <li>
+                            <strong>SignatureAuth</strong>
+                            Method + path + timestamp + body hash. Headers: X-User-PubKey, X-Timestamp, X-Signature.
+                        </li>
+                        <li>
+                            <strong>Umbral PRE</strong>
+                            Followers-only content is re-encrypted for recipients without giving Store the content key.
+                        </li>
+                        <li>
+                            <strong>InternalApi</strong>
+                            Store token validation and Blocker tx pull require X-Internal-Token.
+                        </li>
+                        <li>
+                            <strong>Atomic vouchers</strong>
+                            Store and Block Creator join with one-shot vouchers consumed once in MySQL.
+                        </li>
+                    </ul>
+                </div>
+                <aside class="diagram" aria-label="Encryption modes">
+                    <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18">Share modes</text>
+                        <rect x="20" y="60" width="380" height="52" fill="none" stroke="rgba(214,186,140,0.28)"/>
+                        <text x="36" y="92" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Public — plaintext payload on Store</text>
+                        <rect x="20" y="128" width="380" height="52" fill="none" stroke="rgba(214,186,140,0.28)"/>
+                        <text x="36" y="160" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Me / private — ECIES to owner key</text>
+                        <rect x="20" y="196" width="380" height="52" fill="none" stroke="rgba(111,155,122,0.55)"/>
+                        <text x="36" y="228" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="15">Followers — PRE encapsulate + rekey</text>
+                        <text x="20" y="290" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13">Central holds rekey index · Store holds ciphertext</text>
+                    </svg>
+                </aside>
+            </div>
+        </section>
 
-                        <ul class="benefit-list">
-                            <li class="benefit-item"><strong>Store Nodes</strong>: Earn D-coins for providing encrypted
-                                storage space.</li>
-                            <li class="benefit-item"><strong>Blocker Nodes</strong>: Secure transactions and receive
-                                network processing fees.</li>
-                            <li class="benefit-item"><strong>Low Barrier</strong>: Run on standard hardware or cloud
-                                instances.</li>
-                        </ul>
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="#" class="btn btn-primary pulse"
-                                style="background: var(--node-primary); color: white;">Run a Node</a>
-                            <a href="#" class="btn" style="border: 1px solid rgba(255,255,255,0.1);">Setup Guide</a>
-                        </div>
-                    </div>
-                    <div class="feature-card glass" style="border-color: var(--node-primary);">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">🖥️</div>
-                        <h3 style="font-size: 2rem; margin-bottom: 1rem;">Node Dashboard</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Monitor your uptime, storage
-                            metrics, and earned rewards in real-time with our lightweight operator dashboard.</p>
-                        <div
-                            style="background: #000; padding: 1rem; border-radius: 1rem; font-family: monospace; font-size: 0.9rem;">
-                            <div style="color: #4ade80;">> Status: ONLINE</div>
-                            <div style="color: var(--text-primary);">> Uptime: 99.9%</div>
-                            <div style="color: var(--text-primary);">> Rewards: 124.5 D</div>
-                        </div>
-                    </div>
+        <section id="chat" class="block">
+            <div class="container">
+                <p class="block-kicker">Messaging</p>
+                <h2 class="block-title">E2E chat in two modes.</h2>
+                <p class="block-copy">Central never relays message bodies. Online peers talk over WebRTC; offline messages reuse the encrypted file path on Store with N-of-M placement and participant-only access.</p>
+                <div class="modes">
+                    <article class="mode">
+                        <h3>Online — P2P</h3>
+                        <p>Both users publish presence. Central exchanges WebRTC signaling only. Encrypted packets move peer-to-peer; the API stays out of the content path.</p>
+                    </article>
+                    <article class="mode">
+                        <h3>Offline — Store files</h3>
+                        <p>Each message is one encrypted file on Store. Central indexes conversation metadata. Read/write is limited to conversation participants (signed + IDOR checks).</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="creators" class="creators" style="background: rgba(245, 158, 11, 0.02);">
+        <section id="ecosystem" class="block">
             <div class="container">
-                <div class="grid-2" style="direction: rtl;">
-                    <div style="direction: ltr;">
-                        <h2 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Create Without <span
-                                class="gradient-text">Limits</span></h2>
-                        <p style="color: var(--text-secondary); font-size: 1.25rem;">Your content, your rules. No
-                            censorship, direct interactions, and instant rewards.</p>
-
-                        <ul class="benefit-list">
-                            <li class="benefit-item creator"><strong>Direct Donations</strong>: Receive D-coins directly
-                                from your audience.</li>
-                            <li class="benefit-item creator"><strong>PRE Privacy</strong>: Followers-only content
-                                remains encrypted even from us.</li>
-                            <li class="benefit-item creator"><strong>Permanent Ownership</strong>: Your social graph is
-                                recorded on the blockchain.</li>
-                        </ul>
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="#" class="btn btn-primary"
-                                style="background: var(--creator-primary); color: white;">Start Creating</a>
-                            <a href="#" class="btn" style="border: 1px solid rgba(255,255,255,0.1);">How it Works</a>
-                        </div>
-                    </div>
-                    <div class="interactive-demo glass" style="border-color: var(--creator-primary); direction: ltr;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                            <div
-                                style="width: 48px; height: 48px; background: var(--creator-primary); border-radius: 50%;">
-                            </div>
-                            <div>
-                                <div style="font-weight: bold;">John Doe</div>
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">@johndoe • Just now</div>
-                            </div>
-                        </div>
-                        <p style="margin-bottom: 1.5rem;">Sharing my latest sunset shot from the decentralized cloud! 🌅
-                            #deltanium #web3</p>
-                        <div
-                            style="display: flex; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                            <span>❤️ 1.2k</span>
-                            <span>💬 84</span>
-                            <span style="color: var(--creator-primary); cursor: pointer; font-weight: bold;">💎
-                                Donate</span>
-                        </div>
-                        <div
-                            style="position: absolute; top: 1rem; right: 1rem; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.7rem; font-weight: bold;">
-                            SECURED BY PRE</div>
-                    </div>
+                <p class="block-kicker">Ecosystem</p>
+                <h2 class="block-title">Specialized parts, clear boundaries.</h2>
+                <p class="block-copy">Every component has one job. The coordination plane is Central; the data plane is Store; consensus work lands on Block Creators; crypto lives in Core and the app.</p>
+                <div class="roles">
+                    <article class="role">
+                        <span class="tag">Client</span>
+                        <h3>Deltanium App</h3>
+                        <p>Flutter client: identity, encryption, N-of-M upload orchestration, feed, chat, and signed calls to Central.</p>
+                    </article>
+                    <article class="role">
+                        <span class="tag">Coordinator</span>
+                        <h3>Central API</h3>
+                        <p>MySQL-backed registry for users, follows, stored-file index, PRE rekeys, Store discovery, tx queue, and chat presence/signaling.</p>
+                    </article>
+                    <article class="role">
+                        <span class="tag">Data plane</span>
+                        <h3>Store nodes</h3>
+                        <p>Hold encrypted metadata and blocks. Serve timelines and file downloads. Never receive content keys for private/PRE posts.</p>
+                    </article>
+                    <article class="role">
+                        <span class="tag">Consensus</span>
+                        <h3>Block Creator</h3>
+                        <p>Accepts storage operations after verifying Central’s signed selection decision; pulls work with InternalApi auth.</p>
+                    </article>
+                    <article class="role">
+                        <span class="tag">Crypto</span>
+                        <h3>Deltanium Core</h3>
+                        <p>Umbral PRE native stack (Rust FFI) shared by app and services for encapsulate / rekey / decapsulate.</p>
+                    </article>
+                    <article class="role">
+                        <span class="tag">Library</span>
+                        <h3>Deltanium User</h3>
+                        <p>.NET client helpers for signing, file workflows, and PRE-backed sharing outside the mobile app.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="ecosystem" class="glass" style="border: none; border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div>
-                        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">The <span
-                                class="gradient-text">Deltanium</span> Ecosystem</h2>
-                        <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 2rem;">A robust,
-                            multi-layered architecture designed for the future of the web.</p>
-
-                        <div class="ecosystem-grid">
-                            <div class="eco-item glass">
-                                <span class="eco-dot"></span>
-                                <strong>Mobile App</strong>
-                            </div>
-                            <div class="eco-item glass">
-                                <span class="eco-dot node"></span>
-                                <strong>Store Node</strong>
-                            </div>
-                            <div class="eco-item glass">
-                                <span class="eco-dot"></span>
-                                <strong>Central API</strong>
-                            </div>
-                            <div class="eco-item glass">
-                                <span class="eco-dot node"></span>
-                                <strong>Block Creator</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="position: relative;">
-                        <!-- Placeholder for a nice visual or generated image -->
-                        <div
-                            style="aspect-ratio: 1; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); border-radius: 50%; position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: blur(40px);">
-                        </div>
-                        <div class="glass"
-                            style="aspect-ratio: 16/10; border-radius: 2rem; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 5rem;">
-                            🌐</div>
+        <section id="nodes" class="block">
+            <div class="container split">
+                <div>
+                    <p class="block-kicker">Operators</p>
+                    <h2 class="block-title">Grow the network by running a node.</h2>
+                    <p class="block-copy">Join with a one-shot voucher. Store nodes expand encrypted capacity and N-of-M durability. Block Creators process verified storage operations under Central’s signed decision.</p>
+                    <ul class="plain-list">
+                        <li>
+                            <strong>Store node</strong>
+                            Register with STORE_VOUCHER, expose upload/download APIs, validate PRE tokens via Central.
+                        </li>
+                        <li>
+                            <strong>Block Creator</strong>
+                            Register with VOUCHER, verify decision signatures, accept selected transactions into the mempool.
+                        </li>
+                    </ul>
+                    <div class="hero-actions" style="margin-top: 2rem;">
+                        <a href="https://github.com/dlvstudio" class="btn btn-primary">Open source</a>
+                        <a href="#architecture" class="btn btn-ghost">Back to architecture</a>
                     </div>
                 </div>
+                <aside class="diagram" aria-label="Default local ports">
+                    <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+                        <text x="20" y="36" fill="#d6ba8c" font-family="Syne, sans-serif" font-size="18">Default local map</text>
+                        <text x="20" y="90" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Central API · :5002 · MySQL</text>
+                        <text x="20" y="130" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Store · :5000 / :5001</text>
+                        <text x="20" y="170" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">Block Creator · ~:5003</text>
+                        <text x="20" y="210" fill="#f3efe6" font-family="Manrope, sans-serif" font-size="16">App · CENTRAL_API_BASE …/api</text>
+                        <text x="20" y="260" fill="#9aab9f" font-family="Manrope, sans-serif" font-size="13">Replication factor default: 2</text>
+                    </svg>
+                </aside>
             </div>
         </section>
 
-        <section style="text-align: center;">
-            <div class="container glass"
-                style="padding: 6rem; border-radius: 3rem; background: linear-gradient(135deg, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 100%);">
-                <h2 style="font-size: 4rem; margin-bottom: 2rem;">Ready to <span class="gradient-text">Join?</span></h2>
-                <p
-                    style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Be part of the social revolution. Experience true digital freedom today.</p>
-                <a href="#" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.5rem 4rem;">Get Early
-                    Access</a>
+        <section class="container cta">
+            <h2>Build social software that cannot read you.</h2>
+            <p>Start from the architecture: client keys, N-of-M ciphertext, Central as index. The product surface stays familiar — the trust model does not.</p>
+            <div class="hero-actions">
+                <a href="#architecture" class="btn btn-primary">Review the path</a>
+                <a href="#nodes" class="btn btn-ghost">Operate a node</a>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="logo" style="opacity: 0.5;">
-                Deltanium &copy; 2026
-            </div>
-            <div style="display: flex; gap: 2rem; opacity: 0.5;">
-                <a href="#" style="color: var(--text-primary); text-decoration: none;">Twitter</a>
-                <a href="#" style="color: var(--text-primary); text-decoration: none;">GitHub</a>
-                <a href="#" style="color: var(--text-primary); text-decoration: none;">Discord</a>
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <div>Deltanium · 2026</div>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="https://github.com/dlvstudio">GitHub</a>
+                <a href="#ecosystem">Ecosystem</a>
             </div>
         </div>
     </footer>
+
+    <script>
+        const steps = document.querySelectorAll('.flow-step');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-in');
+                });
+            }, { threshold: 0.2 });
+            steps.forEach((el) => io.observe(el));
+        } else {
+            steps.forEach((el) => el.classList.add('is-in'));
+        }
+    </script>
 </body>
 
 </html>
