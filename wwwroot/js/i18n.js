@@ -67,16 +67,18 @@
       "join.s1": "Create your identity on the app — keys stay on your device.",
       "join.s2": "Follow friends, publish your first post, try a private chat.",
       "join.s3": "Invite someone you trust. The network gets better together.",
-      "join.cta1": "Request early access",
-      "join.cta2": "Follow the project",
+      "join.cta1": "Open the app",
+      "join.cta2": "Get a node voucher",
+      "join.cta3": "GitHub",
       "join.note":
-        "Want to help run storage or secure the network later? You can — after you are part of the community as a user.",
+        "Want to run a Store or Block Creator node? Grab a one-shot voucher from the public list, then follow the register steps.",
       "cta.title": "Come for the people. Stay for the privacy.",
       "cta.copy":
         "Deltanium is social media that treats you like an owner — not a product. Join the network and bring someone with you.",
       "cta.review": "Join now",
       "cta.operate": "See what you can do",
       "footer.join": "Join",
+      "footer.vouchers": "Node vouchers",
     },
     vi: {
       "meta.title": "Deltanium | Mạng xã hội thuộc về bạn",
@@ -145,16 +147,18 @@
       "join.s1": "Tạo danh tính trên app — khóa nằm trên máy bạn.",
       "join.s2": "Theo dõi bạn bè, đăng bài đầu tiên, thử chat riêng.",
       "join.s3": "Mời một người bạn tin. Mạng tốt hơn khi có thêm bạn.",
-      "join.cta1": "Xin early access",
-      "join.cta2": "Theo dõi dự án",
+      "join.cta1": "Mở app",
+      "join.cta2": "Lấy voucher chạy node",
+      "join.cta3": "GitHub",
       "join.note":
-        "Muốn góp chạy lưu trữ hay bảo vệ mạng sau này? Được — sau khi bạn đã là một phần cộng đồng với tư cách người dùng.",
+        "Muốn chạy Store hoặc Block Creator? Lấy voucher một lần từ danh sách công khai, rồi làm theo bước đăng ký.",
       "cta.title": "Đến vì con người. Ở lại vì riêng tư.",
       "cta.copy":
         "Deltanium là mạng xã hội đối xử với bạn như chủ nhân — không phải sản phẩm. Tham gia và dẫn thêm một người nữa.",
       "cta.review": "Tham gia ngay",
       "cta.operate": "Xem bạn làm được gì",
       "footer.join": "Tham gia",
+      "footer.vouchers": "Voucher node",
     },
   };
 
