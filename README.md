@@ -1,20 +1,29 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Deltanium Landing
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Marketing site for the Deltanium decentralized social network.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Production
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+| | URL |
+|--|-----|
+| **Site** | [https://deltanium.com](https://deltanium.com) |
+| www | [https://www.deltanium.com](https://www.deltanium.com) |
+| App CTA | [https://app.deltanium.com](https://app.deltanium.com) |
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Local
+
+```bash
+npm install
+npm run dev
+```
+
+Build for static hosting:
+
+```bash
+npm run build
+```
+
+## Related
+
+- App: [deltanium-app](https://github.com/dlvstudio/deltanium-app) → [app.deltanium.com](https://app.deltanium.com)
+- API: [deltanium-api](https://github.com/dlvstudio/deltanium-api) → [api.deltanium.com](https://api.deltanium.com)
