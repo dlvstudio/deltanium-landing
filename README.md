@@ -27,3 +27,7 @@ npm run build
 
 - App: [deltanium-app](https://github.com/dlvstudio/deltanium-app) → [app.deltanium.com](https://app.deltanium.com)
 - API: [deltanium-api](https://github.com/dlvstudio/deltanium-api) → [api.deltanium.com](https://api.deltanium.com)
+
+## License
+
+MIT — see [LICENSE](LICENSE).
