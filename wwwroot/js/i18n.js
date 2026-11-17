@@ -8,7 +8,25 @@
       "nav.features": "What you can do",
       "nav.privacy": "Your privacy",
       "nav.join": "Join",
+      "nav.txs": "Transactions",
       "nav.cta": "Join the network",
+      "tx.kicker": "Network explorer",
+      "tx.title": "Transactions",
+      "tx.copy": "Search confirmed chain transactions by id, public key, or type.",
+      "tx.loading": "Loading chain tip…",
+      "tx.q": "Search",
+      "tx.type": "Type",
+      "tx.pending": "Include pending",
+      "tx.search": "Search",
+      "tx.prev": "Previous",
+      "tx.next": "Next",
+      "tx.col.time": "Time",
+      "tx.col.type": "Type",
+      "tx.col.id": "Id",
+      "tx.col.from": "From",
+      "tx.col.to": "To",
+      "tx.col.block": "Block",
+      "tx.col.status": "Status",
       "hero.line": "Your social life — without selling your privacy.",
       "hero.sub":
         "Post, follow friends, and chat on a network you actually own. Your keys stay with you. We never read your private content.",
@@ -79,6 +97,39 @@
       "cta.operate": "See what you can do",
       "footer.join": "Join",
       "footer.vouchers": "Node vouchers",
+      "nav.nodes": "Nodes",
+      "net.testnote": "Testnet: test coins only, data may be reset.",
+      "nodes.kicker": "Network explorer",
+      "nodes.title": "Nodes",
+      "nodes.copy": "Live status of every active Block Creator and Store node, checked by the Central API.",
+      "nodes.loading": "Checking nodes…",
+      "nodes.refresh": "Refresh",
+      "nodes.network": "Network",
+      "nodes.online": "Online",
+      "nodes.blockers": "Block Creators",
+      "nodes.stores": "Stores",
+      "nodes.tip": "Chain height",
+      "nodes.col.node": "Node",
+      "nodes.col.status": "Status",
+      "nodes.col.height": "Height",
+      "nodes.col.version": "Version",
+      "nodes.col.latency": "Latency",
+      "nodes.col.seen": "Last seen",
+      "nodes.col.key": "Public key",
+      "nodes.up": "Online",
+      "nodes.down": "Offline",
+      "nodes.wrongnet": "Other network",
+      "nodes.none": "No active nodes.",
+      "nodes.checked": "Checked",
+      "nodes.auto": "refreshes every 30 s",
+      "nodes.error": "Could not reach the Central API",
+      "testnet.kicker": "Testnet",
+      "testnet.title": "Try everything on the testnet first",
+      "testnet.copy":
+        "A separate network with its own accounts, test coins and nodes. Signatures are bound to the network, so nothing done on testnet can be replayed on mainnet. Testnet data may be reset at any time.",
+      "testnet.app": "Open the testnet app",
+      "testnet.txs": "Testnet transactions",
+      "testnet.nodes": "Testnet nodes",
     },
     vi: {
       "meta.title": "Deltanium | Mạng xã hội thuộc về bạn",
@@ -88,7 +139,25 @@
       "nav.features": "Bạn làm được gì",
       "nav.privacy": "Riêng tư của bạn",
       "nav.join": "Tham gia",
+      "nav.txs": "Giao dịch",
       "nav.cta": "Tham gia mạng",
+      "tx.kicker": "Khám phá mạng",
+      "tx.title": "Giao dịch",
+      "tx.copy": "Tìm giao dịch đã xác nhận theo id, khóa công khai hoặc loại.",
+      "tx.loading": "Đang tải tip chuỗi…",
+      "tx.q": "Tìm kiếm",
+      "tx.type": "Loại",
+      "tx.pending": "Gồm pending",
+      "tx.search": "Tìm",
+      "tx.prev": "Trước",
+      "tx.next": "Sau",
+      "tx.col.time": "Thời gian",
+      "tx.col.type": "Loại",
+      "tx.col.id": "Id",
+      "tx.col.from": "Từ",
+      "tx.col.to": "Đến",
+      "tx.col.block": "Block",
+      "tx.col.status": "Trạng thái",
       "hero.line": "Đời sống xã hội của bạn — không bán quyền riêng tư.",
       "hero.sub":
         "Đăng bài, theo dõi bạn bè và chat trên mạng thuộc về bạn. Khóa nằm trên máy bạn. Chúng tôi không đọc nội dung riêng tư.",
@@ -159,19 +228,58 @@
       "cta.operate": "Xem bạn làm được gì",
       "footer.join": "Tham gia",
       "footer.vouchers": "Voucher node",
+      "nav.nodes": "Node",
+      "net.testnote": "Testnet: chỉ dùng coin thử, dữ liệu có thể bị xoá.",
+      "nodes.kicker": "Khám phá mạng",
+      "nodes.title": "Các node",
+      "nodes.copy": "Trạng thái trực tiếp của mọi node Block Creator và Store đang hoạt động, do Central API kiểm tra.",
+      "nodes.loading": "Đang kiểm tra node…",
+      "nodes.refresh": "Làm mới",
+      "nodes.network": "Mạng",
+      "nodes.online": "Đang chạy",
+      "nodes.blockers": "Block Creator",
+      "nodes.stores": "Store",
+      "nodes.tip": "Chiều cao chuỗi",
+      "nodes.col.node": "Node",
+      "nodes.col.status": "Trạng thái",
+      "nodes.col.height": "Height",
+      "nodes.col.version": "Phiên bản",
+      "nodes.col.latency": "Độ trễ",
+      "nodes.col.seen": "Lần cuối thấy",
+      "nodes.col.key": "Khóa công khai",
+      "nodes.up": "Đang chạy",
+      "nodes.down": "Không truy cập được",
+      "nodes.wrongnet": "Khác mạng",
+      "nodes.none": "Không có node nào đang hoạt động.",
+      "nodes.checked": "Kiểm tra lúc",
+      "nodes.auto": "tự làm mới mỗi 30 giây",
+      "nodes.error": "Không kết nối được Central API",
+      "testnet.kicker": "Testnet",
+      "testnet.title": "Thử mọi thứ trên testnet trước",
+      "testnet.copy":
+        "Một mạng riêng với tài khoản, coin thử và node riêng. Chữ ký gắn với từng mạng nên không thể dùng lại thao tác trên testnet cho mainnet. Dữ liệu testnet có thể bị xoá bất cứ lúc nào.",
+      "testnet.app": "Mở app testnet",
+      "testnet.txs": "Giao dịch testnet",
+      "testnet.nodes": "Node testnet",
     },
   };
 
+  let current = "en";
+  window.DeltaniumI18n = { t: (key) => (dict[current] || dict.en)[key] ?? dict.en[key] ?? null };
+
   const apply = (lang) => {
     const pack = dict[lang] || dict.en;
+    current = dict[lang] ? lang : "en";
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (pack[key] != null) el.textContent = pack[key];
     });
-    if (pack["meta.title"]) document.title = pack["meta.title"];
+    // Homepage title/description only; explorer pages keep their own.
+    const home = !document.body.classList.contains("tx-page");
+    if (home && pack["meta.title"]) document.title = pack["meta.title"];
     const meta = document.querySelector('meta[name="description"]');
-    if (meta && pack["meta.desc"]) meta.setAttribute("content", pack["meta.desc"]);
+    if (home && meta && pack["meta.desc"]) meta.setAttribute("content", pack["meta.desc"]);
 
     document.querySelectorAll("[data-lang]").forEach((btn) => {
       const active = btn.getAttribute("data-lang") === lang;
@@ -181,6 +289,7 @@
     try {
       localStorage.setItem("deltanium.lang", lang);
     } catch (_) {}
+    document.dispatchEvent(new CustomEvent("deltanium:lang", { detail: current }));
   };
 
   const detect = () => {

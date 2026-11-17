@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deltanium | Nodes</title>
+  <meta name="description" content="Live status of Deltanium Block Creator and Store nodes." />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/transactions.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="tx-page" data-page="nodes">
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">Deltanium</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#why" data-i18n="nav.why">Why Deltanium</a></li>
+          <li><a href="transactions.html" data-i18n="nav.txs">Transactions</a></li>
+          <li><a href="nodes.html" data-i18n="nav.nodes" aria-current="page">Nodes</a></li>
+          <li><a href="index.html#join" data-i18n="nav.join">Join</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="vi" title="Tiếng Việt" aria-label="Tiếng Việt">VI</button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English">EN</button>
+        </div>
+        <a href="https://app.deltanium.com" class="btn btn-primary" data-app-link data-i18n="nav.cta">Join the network</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tx-main">
+    <div class="container">
+      <p class="block-kicker" data-i18n="nodes.kicker">Network explorer</p>
+      <h1 class="block-title" data-i18n="nodes.title">Nodes</h1>
+      <p class="block-copy" data-i18n="nodes.copy">Live status of every active Block Creator and Store node, checked by the Central API.</p>
+
+      <div class="net-bar">
+        <div class="net-switch" role="group" aria-label="Network">
+          <button type="button" class="net-btn" data-net="mainnet">Mainnet</button>
+          <button type="button" class="net-btn" data-net="testnet">Testnet</button>
+        </div>
+        <p class="testnet-note" data-i18n="net.testnote">Testnet: test coins only, data may be reset.</p>
+      </div>
+
+      <div class="node-summary" id="summary">
+        <div class="stat"><span class="stat-label" data-i18n="nodes.network">Network</span><span class="stat-value" id="sumNetwork">—</span></div>
+        <div class="stat"><span class="stat-label" data-i18n="nodes.online">Online</span><span class="stat-value" id="sumOnline">—</span></div>
+        <div class="stat"><span class="stat-label" data-i18n="nodes.blockers">Block Creators</span><span class="stat-value" id="sumBlockers">—</span></div>
+        <div class="stat"><span class="stat-label" data-i18n="nodes.stores">Stores</span><span class="stat-value" id="sumStores">—</span></div>
+        <div class="stat"><span class="stat-label" data-i18n="nodes.tip">Chain height</span><span class="stat-value" id="sumTip">—</span></div>
+      </div>
+
+      <div class="node-meta">
+        <p class="tx-meta" id="checkedLine" data-i18n="nodes.loading">Checking nodes…</p>
+        <button type="button" class="btn btn-ghost btn-small" id="refresh" data-i18n="nodes.refresh">Refresh</button>
+      </div>
+      <p class="tx-error" id="errorLine" hidden></p>
+
+      <h2 class="node-h2" data-i18n="nodes.blockers">Block Creators</h2>
+      <div class="tx-table-wrap">
+        <table class="tx-table node-table">
+          <thead>
+            <tr>
+              <th data-i18n="nodes.col.node">Node</th>
+              <th data-i18n="nodes.col.status">Status</th>
+              <th data-i18n="nodes.col.height">Height</th>
+              <th data-i18n="nodes.col.version">Version</th>
+              <th data-i18n="nodes.col.latency">Latency</th>
+              <th data-i18n="nodes.col.seen">Last seen</th>
+              <th data-i18n="nodes.col.key">Public key</th>
+            </tr>
+          </thead>
+          <tbody id="blockerBody"></tbody>
+        </table>
+      </div>
+
+      <h2 class="node-h2" data-i18n="nodes.stores">Stores</h2>
+      <div class="tx-table-wrap">
+        <table class="tx-table node-table">
+          <thead>
+            <tr>
+              <th data-i18n="nodes.col.node">Node</th>
+              <th data-i18n="nodes.col.status">Status</th>
+              <th data-i18n="nodes.col.version">Version</th>
+              <th data-i18n="nodes.col.latency">Latency</th>
+              <th data-i18n="nodes.col.seen">Last seen</th>
+              <th data-i18n="nodes.col.key">Public key</th>
+            </tr>
+          </thead>
+          <tbody id="storeBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>Deltanium · 2026</div>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="transactions.html" data-i18n="nav.txs">Transactions</a>
+        <a href="nodes.html" data-i18n="nav.nodes">Nodes</a>
+        <a href="index.html#join" data-i18n="footer.join">Join</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/network.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/nodes.js"></script>
+</body>
+</html>

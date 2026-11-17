@@ -716,3 +716,16 @@ section.block {
         font-size: 0.85rem;
     }
 }
+
+.testnet-card {
+    margin-top: 2.5rem;
+    padding: 1.5rem 1.6rem;
+    border: 1px dashed rgba(196, 120, 90, 0.55);
+    border-radius: var(--radius);
+    background: rgba(196, 120, 90, 0.06);
+}
+
+.testnet-card .block-kicker { color: var(--danger-soft); }
+.testnet-card h3 { font-family: var(--font-display); font-size: 1.35rem; margin: 0.35rem 0 0.6rem; }
+.testnet-card p { color: var(--muted); }
+.testnet-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
