@@ -1,0 +1,224 @@
+/* How it works page */
+.how-main { padding-top: 5.5rem; }
+.how-hero { padding-bottom: 1rem; }
+.how-title { max-width: min(36rem, 100%); }
+.how-h2 { max-width: min(32rem, 100%); }
+.how-note { margin-top: 1.5rem; color: var(--muted); }
+.how-note a { color: var(--sand); }
+
+.how-node {
+    padding: 1.2rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(26, 40, 34, 0.55);
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+}
+
+.how-node h3 { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -0.02em; }
+.how-node p { color: var(--muted); font-size: 0.95rem; }
+.how-ico { font-size: 1.5rem; line-height: 1; }
+
+.how-tag {
+    justify-self: start;
+    margin-top: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--sand);
+}
+
+.how-tag-earn { color: var(--moss); border-color: rgba(111, 155, 122, 0.5); }
+
+/* Map: you -> (directory, stores, blockers) */
+.how-map {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1.6fr);
+    align-items: center;
+    margin-top: 2.25rem;
+}
+
+.how-node-you { border-color: var(--sand); background: rgba(214, 186, 140, 0.08); }
+.how-col { display: grid; gap: 0.9rem; }
+
+/* Connector: horizontal line with an arrow head; vertical on phones */
+.how-link { display: flex; align-items: center; justify-content: center; align-self: stretch; }
+.how-link span { position: relative; display: block; width: 100%; height: 2px; background: var(--sand); opacity: 0.7; }
+.how-link span::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -5px;
+    border-left: 8px solid var(--sand);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+/* Steps */
+.how-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.25rem;
+    counter-reset: none;
+}
+
+.how-steps li {
+    position: relative;
+    padding: 1.1rem 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(26, 40, 34, 0.55);
+}
+
+.how-steps li:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -0.85rem;
+    top: 1.15rem;
+    color: var(--sand);
+    font-weight: 800;
+}
+
+.how-num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+}
+
+.how-steps h3 { font-family: var(--font-display); font-size: 1.02rem; margin-bottom: 0.35rem; letter-spacing: -0.02em; }
+.how-steps p { color: var(--muted); font-size: 0.92rem; }
+
+/* Lock diagram */
+.how-lock {
+    display: grid;
+    gap: 0.8rem;
+    align-content: center;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(26, 40, 34, 0.55);
+}
+
+.how-lock-row { display: flex; align-items: center; justify-content: center; gap: 0.7rem; flex-wrap: wrap; }
+.how-lock-mid { opacity: 0.85; }
+.how-lock-cap { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: -0.4rem; }
+.how-arrow { color: var(--sand); font-weight: 800; }
+
+.how-chip {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.how-chip-you { border-color: var(--sand); color: var(--sand-bright); }
+.how-chip-dim { color: var(--muted); border-style: dashed; }
+
+/* Money */
+.how-money {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr) 3rem minmax(0, 1.3fr);
+    align-items: stretch;
+    margin-top: 2.25rem;
+}
+
+.how-bar { margin-top: 0.4rem; height: 2rem; }
+
+.how-table td:first-child { font-weight: 700; color: var(--text); }
+.how-table td { vertical-align: top; }
+
+@media (max-width: 900px) {
+    .how-map, .how-money { grid-template-columns: 1fr; }
+    .how-link { height: 2.2rem; }
+    .how-link span { width: 2px; height: 100%; }
+    .how-link span::after { right: -5px; top: auto; bottom: -1px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--sand); border-bottom: 0; }
+    .how-steps { grid-template-columns: 1fr; }
+    .how-steps li:not(:last-child)::after { content: "↓"; right: auto; left: 1.6rem; top: auto; bottom: -1.05rem; }
+}
+
+/* Who holds what */
+.how-table-wrap { margin-top: 2rem; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+.how-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.how-table th {
+    text-align: left;
+    padding: 0.8rem 1rem;
+    color: var(--sand);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(26, 40, 34, 0.7);
+    border-bottom: 1px solid var(--line);
+}
+.how-table td { padding: 0.85rem 1rem; color: var(--muted); border-bottom: 1px solid var(--line); line-height: 1.5; }
+.how-table tr:last-child td { border-bottom: 0; }
+
+@media (max-width: 640px) {
+    .how-table thead { display: none; }
+    .how-table, .how-table tbody, .how-table tr, .how-table td { display: block; width: 100%; }
+    .how-table tr { padding: 0.8rem 1rem; border-bottom: 1px solid var(--line); }
+    .how-table tr:last-child { border-bottom: 0; }
+    .how-table td { padding: 0.15rem 0; border: 0; }
+    .how-table td:first-child { color: var(--sand-bright); margin-bottom: 0.2rem; }
+}
+
+/* Node setup guide */
+.setup-toc { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin-top: 1.5rem; }
+.setup-toc a { color: var(--sand); font-weight: 700; text-decoration: none; }
+.setup-toc a:hover { color: var(--sand-bright); }
+.setup-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.setup-req { margin-top: 1.75rem; }
+.setup-steps { list-style: none; counter-reset: step; display: grid; gap: 1.5rem; margin-top: 2rem; }
+.setup-steps > li { counter-increment: step; position: relative; padding-left: 3rem; }
+.setup-steps > li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 2rem; height: 2rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--sand); color: var(--ink);
+    font-family: var(--font-display); font-weight: 800;
+}
+.setup-steps h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.setup-steps p { color: var(--muted); margin-bottom: 0.6rem; }
+.how-main pre {
+    margin-top: 0.6rem;
+    padding: 1rem 1.1rem;
+    background: #0a100e;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+.how-main pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); white-space: pre; }
+
+/* Open source + official accounts (home and how it works) */
+.repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; margin-top: 2rem; }
+.repo-card { display: grid; gap: 0.35rem; padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(26, 40, 34, 0.55); text-decoration: none; color: inherit; }
+.repo-card:hover { border-color: var(--sand); }
+.repo-card strong { font-family: var(--font-display); font-size: 1rem; color: var(--sand-bright); }
+.repo-card span { color: var(--muted); font-size: 0.9rem; }
+.acct-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.acct-card { padding: 1.2rem 1.3rem; border: 1px solid var(--sand); border-radius: var(--radius); background: rgba(214, 186, 140, 0.06); display: grid; gap: 0.35rem; }
+.acct-card h3 { font-family: var(--font-display); font-size: 1.05rem; }
+.acct-card dl { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.9rem; margin-top: 0.3rem; }
+.acct-card dt { color: var(--muted); }
+.acct-card dd { font-weight: 700; word-break: break-all; }
+.acct-card a { color: var(--sand-bright); }
+.acct-warn { margin-top: 1rem; padding-left: 0.9rem; border-left: 2px solid var(--danger-soft); color: var(--muted); font-size: 0.92rem; }
+
+@media (max-width: 900px) {
+    .setup-grid, .acct-grid { grid-template-columns: 1fr; }
+}

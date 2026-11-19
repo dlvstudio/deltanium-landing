@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deltanium | How it works</title>
+  <meta name="description" content="How Deltanium works, in plain words: your keys, encrypted copies on Store nodes, a shared ledger, and where the money goes." />
+  <link rel="stylesheet" href="css/index.css?v=20261119e" />
+  <link rel="stylesheet" href="css/how.css?v=20261119e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="how-page">
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">Deltanium</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#economy" data-i18n="nav.economy">Earn</a></li>
+          <li><a href="how-it-works.html" data-i18n="nav.how" aria-current="page">How it works</a></li>
+          <li><a href="node-setup.html" data-i18n="nav.setup">Run a node</a></li>
+          <li><a href="transactions.html" data-i18n="nav.txs">Transactions</a></li>
+          <li><a href="nodes.html" data-i18n="nav.nodes">Nodes</a></li>
+          <li><a href="index.html#join" data-i18n="nav.join">Join</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="vi" title="Tiếng Việt" aria-label="Tiếng Việt">VI</button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English">EN</button>
+        </div>
+        <a href="https://app.deltanium.com" class="btn btn-primary" data-i18n="nav.cta">Join the network</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="how-main">
+    <section class="block how-hero">
+      <div class="container">
+        <p class="block-kicker" data-i18n="how.kicker">How it works</p>
+        <h1 class="block-title how-title" data-i18n="how.title">A social network where the locks are on your side.</h1>
+        <p class="block-copy" data-i18n="how.copy">No jargon needed. Four kinds of machines work together, and only your device holds the key to your private content.</p>
+      </div>
+    </section>
+
+    <!-- 1. The four parts -->
+    <section class="block" id="parts">
+      <div class="container">
+        <p class="block-kicker" data-i18n="how.parts.kicker">The big picture</p>
+        <h2 class="block-title how-h2" data-i18n="how.parts.title">Four parts, one network</h2>
+        <div class="how-map" role="img" aria-label="Your app talks to the Directory, stores encrypted copies on Store nodes; Block Creators keep the shared ledger.">
+          <div class="how-node how-node-you">
+            <span class="how-ico" aria-hidden="true">🔑</span>
+            <h3 data-i18n="how.p1.t">You &amp; your app</h3>
+            <p data-i18n="how.p1.p">Your phone or browser. It holds your key, locks what you post and unlocks what is shared with you.</p>
+            <span class="how-tag" data-i18n="how.p1.tag">Holds your private key</span>
+          </div>
+          <div class="how-link" aria-hidden="true"><span></span></div>
+          <div class="how-col">
+            <div class="how-node">
+              <span class="how-ico" aria-hidden="true">📇</span>
+              <h3 data-i18n="how.p2.t">Directory (Central)</h3>
+              <p data-i18n="how.p2.p">Like a phone book: who is who, who follows whom, and where each sealed copy is kept. It cannot open your private posts.</p>
+            </div>
+            <div class="how-node">
+              <span class="how-ico" aria-hidden="true">🗄️</span>
+              <h3 data-i18n="how.p3.t">Store nodes</h3>
+              <p data-i18n="how.p3.p">Computers that keep sealed copies of posts, photos and offline messages — at least two copies on different machines.</p>
+              <span class="how-tag how-tag-earn" data-i18n="how.p3.tag">Paid from storage fees</span>
+            </div>
+            <div class="how-node">
+              <span class="how-ico" aria-hidden="true">📒</span>
+              <h3 data-i18n="how.p4.t">Block Creators</h3>
+              <p data-i18n="how.p4.p">Keep a shared ledger of actions and payments that anyone can check, so no one can quietly rewrite history.</p>
+              <span class="how-tag how-tag-earn" data-i18n="how.p4.tag">Paid from transaction fees</span>
+            </div>
+          </div>
+        </div>
+        <p class="how-note" data-i18n="how.parts.note">Anyone can run a Store node or a Block Creator and earn from it — see the live list on the Nodes page.</p>
+      </div>
+    </section>
+
+    <!-- 2. Posting a private post -->
+    <section class="block" id="post">
+      <div class="container">
+        <p class="block-kicker" data-i18n="how.post.kicker">Step by step</p>
+        <h2 class="block-title how-h2" data-i18n="how.post.title">What happens when you post</h2>
+        <ol class="how-steps">
+          <li>
+            <span class="how-num">1</span>
+            <h3 data-i18n="how.s1.t">You write</h3>
+            <p data-i18n="how.s1.p">A post, a photo, a message — on your own device.</p>
+          </li>
+          <li>
+            <span class="how-num">2</span>
+            <h3 data-i18n="how.s2.t">Your device locks it</h3>
+            <p data-i18n="how.s2.p">It is encrypted before it leaves your phone. What travels is a sealed package.</p>
+          </li>
+          <li>
+            <span class="how-num">3</span>
+            <h3 data-i18n="how.s3.t">Copies are stored</h3>
+            <p data-i18n="how.s3.p">The sealed package goes to two Store nodes, so one going offline loses nothing.</p>
+          </li>
+          <li>
+            <span class="how-num">4</span>
+            <h3 data-i18n="how.s4.t">The Directory notes where</h3>
+            <p data-i18n="how.s4.p">It records which Stores hold the package — not what is inside.</p>
+          </li>
+          <li>
+            <span class="how-num">5</span>
+            <h3 data-i18n="how.s5.t">Friends open it</h3>
+            <p data-i18n="how.s5.p">The people you chose fetch the package and unlock it on their own devices.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3. Who can read -->
+    <section class="block" id="read">
+      <div class="container split">
+        <div>
+          <p class="block-kicker" data-i18n="how.read.kicker">Locks and keys</p>
+          <h2 class="block-title how-h2" data-i18n="how.read.title">Who can read what you share</h2>
+          <ul class="plain-list">
+            <li><strong data-i18n="how.r1.t">Public</strong><span data-i18n="how.r1.p">Anyone can read it — like a post on a notice board.</span></li>
+            <li><strong data-i18n="how.r2.t">Followers</strong><span data-i18n="how.r2.p">Locked. Each follower gets a personal key from you to open it.</span></li>
+            <li><strong data-i18n="how.r3.t">Only me</strong><span data-i18n="how.r3.p">Locked with your key alone. Nobody else — not the Stores, not the Directory, not us.</span></li>
+          </ul>
+        </div>
+        <aside class="how-lock" aria-hidden="true">
+          <div class="how-lock-row"><span class="how-chip how-chip-you" data-i18n="how.lock.you">You</span><span class="how-arrow">→</span><span class="how-chip" data-i18n="how.lock.seal">🔒 sealed</span></div>
+          <div class="how-lock-row how-lock-mid"><span class="how-chip how-chip-dim" data-i18n="how.lock.store">Store nodes</span><span class="how-chip how-chip-dim" data-i18n="how.lock.dir">Directory</span></div>
+          <p class="how-lock-cap" data-i18n="how.lock.cap">see only the sealed package</p>
+          <div class="how-lock-row"><span class="how-chip" data-i18n="how.lock.seal2">🔒 sealed</span><span class="how-arrow">→</span><span class="how-chip how-chip-you" data-i18n="how.lock.friend">🔑 Friend opens</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 4. Money -->
+    <section class="block" id="money">
+      <div class="container">
+        <p class="block-kicker" data-i18n="how.money.kicker">Money</p>
+        <h2 class="block-title how-h2" data-i18n="how.money.title">Where the money goes</h2>
+        <div class="how-money">
+          <div class="how-node">
+            <h3 data-i18n="how.m1.t">1. Top up</h3>
+            <p data-i18n="how.m1.p">Bank transfer (VietQR) or PayPal. 100,000 VND becomes 97,000 D (3% fee).</p>
+          </div>
+          <div class="how-link" aria-hidden="true"><span></span></div>
+          <div class="how-node">
+            <h3 data-i18n="how.m2.t">2. D in your wallet</h3>
+            <p data-i18n="how.m2.p">1 D = 1 VND, backed 1:1 by money held in reserve. Free tier: 200 MB storage to start.</p>
+          </div>
+          <div class="how-link" aria-hidden="true"><span></span></div>
+          <div class="how-node">
+            <h3 data-i18n="how.m3.t">3. Pay for what you use</h3>
+            <p data-i18n="how.m3.p">Extra storage, bandwidth, tips and subscriptions. Every fee is split:</p>
+            <div class="econ-bar how-bar" role="img" aria-label="80 nodes, 10 network fund, 10 operations">
+              <span class="econ-bar-node" style="flex:80">80</span>
+              <span class="econ-bar-fund" style="flex:10">10</span>
+              <span class="econ-bar-ops" style="flex:10">10</span>
+            </div>
+            <ul class="econ-legend">
+              <li><i class="dot dot-node"></i><span data-i18n="how.m3.node">Node operators</span></li>
+              <li><i class="dot dot-fund"></i><span data-i18n="how.m3.fund">Network fund (free tier, repairs)</span></li>
+              <li><i class="dot dot-ops"></i><span data-i18n="how.m3.ops">Operations</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="acct-block" id="accounts-how">
+                    <h3 class="econ-h3" data-i18n="acct.title">Official payment accounts</h3>
+                    <p class="block-copy" data-i18n="acct.copy">Top-ups are only ever paid into these two accounts, owned by Digitallife JSC, the company operating Deltanium.</p>
+                    <div class="acct-grid">
+                        <div class="acct-card">
+                            <h3 data-i18n="acct.bank.t">Bank transfer / VietQR</h3>
+                            <dl>
+                                <dt data-i18n="acct.bank">Bank</dt><dd>MB Bank (MBBank)</dd>
+                                <dt data-i18n="acct.no">Account</dt><dd>369999998</dd>
+                                <dt data-i18n="acct.holder">Holder</dt><dd>DIGITALLIFE JSC</dd>
+                            </dl>
+                        </div>
+                        <div class="acct-card">
+                            <h3 data-i18n="acct.pp.t">PayPal (USD)</h3>
+                            <dl>
+                                <dt data-i18n="acct.link">Link</dt><dd><a href="https://paypal.me/DigitallifeJSC" target="_blank" rel="noopener">paypal.me/DigitallifeJSC</a></dd>
+                                <dt data-i18n="acct.holder">Holder</dt><dd>Digitallife JSC</dd>
+                                <dt data-i18n="acct.min">Minimum</dt><dd>20 USD</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <p class="acct-warn" data-i18n="acct.warn">Always start a top-up from the app so you get your DLT code, and put that code in the transfer content or PayPal note. We never ask you to pay any other account, by message or by phone.</p>
+                </div>
+        <p class="how-note"><a href="index.html#economy" data-i18n="how.money.more">See the full numbers and the node income calculator →</a></p>
+      </div>
+    </section>
+
+    <!-- 5. Who holds what -->
+    <section class="block" id="holds">
+      <div class="container">
+        <p class="block-kicker" data-i18n="how.holds.kicker">Plain facts</p>
+        <h2 class="block-title how-h2" data-i18n="how.holds.title">Who holds what</h2>
+        <div class="how-table-wrap">
+          <table class="how-table">
+            <thead>
+              <tr><th data-i18n="how.h.what">What</th><th data-i18n="how.h.where">Where it lives</th><th data-i18n="how.h.who">Who can see it</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-i18n="how.h1.a">Your private key (12-word phrase)</td><td data-i18n="how.h1.b">Only on your device</td><td data-i18n="how.h1.c">Only you. Lose it and nobody can recover it — write it down.</td></tr>
+              <tr><td data-i18n="how.h2.a">Your public key</td><td data-i18n="how.h2.b">Directory and ledger</td><td data-i18n="how.h2.c">Everyone — it is your address, it opens nothing.</td></tr>
+              <tr><td data-i18n="how.h3.a">Private posts and chats</td><td data-i18n="how.h3.b">Sealed copies on Store nodes</td><td data-i18n="how.h3.c">Only the people you chose.</td></tr>
+              <tr><td data-i18n="how.h4.a">Public posts</td><td data-i18n="how.h4.b">Copies on Store nodes</td><td data-i18n="how.h4.c">Everyone.</td></tr>
+              <tr><td data-i18n="how.h5.a">Name, bio, avatar</td><td data-i18n="how.h5.b">Directory</td><td data-i18n="how.h5.c">Everyone.</td></tr>
+              <tr><td data-i18n="how.h6.a">Email</td><td data-i18n="how.h6.b">Directory</td><td data-i18n="how.h6.c">Only you.</td></tr>
+              <tr><td data-i18n="how.h7.a">Payments and actions</td><td data-i18n="how.h7.b">Shared ledger</td><td data-i18n="how.h7.c">Everyone can verify them; private content is never in it.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta">
+        <h2 data-i18n="how.cta.title">Try it, or help run it.</h2>
+        <p data-i18n="how.cta.copy">Start as a user in a minute, or run a node and earn from the network you help power.</p>
+        <div class="hero-actions">
+          <a href="https://app.deltanium.com" class="btn btn-primary" data-i18n="hero.cta1">Become a user</a>
+          <a href="index.html#economy" class="btn btn-earn" data-i18n="hero.cta.node">Run a node, get paid</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>Deltanium · 2026</div>
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html" data-i18n="nav.how">How it works</a>
+        <a href="node-setup.html" data-i18n="nav.setup">Run a node</a>
+        <a href="transactions.html" data-i18n="nav.txs">Transactions</a>
+        <a href="nodes.html" data-i18n="nav.nodes">Nodes</a>
+        <a href="index.html#join" data-i18n="footer.join">Join</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=20261119e"></script>
+</body>
+</html>

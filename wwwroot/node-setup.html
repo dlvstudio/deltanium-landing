@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deltanium | Run a node</title>
+  <meta name="description" content="Step-by-step guide to run a Deltanium Store node or Block Creator and earn from network fees." />
+  <link rel="stylesheet" href="css/index.css?v=20261119e" />
+  <link rel="stylesheet" href="css/how.css?v=20261119e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="how-page">
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">Deltanium</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#economy" data-i18n="nav.economy">Earn</a></li>
+          <li><a href="how-it-works.html" data-i18n="nav.how">How it works</a></li>
+          <li><a href="node-setup.html" data-i18n="nav.setup" aria-current="page">Run a node</a></li>
+          <li><a href="nodes.html" data-i18n="nav.nodes">Nodes</a></li>
+          <li><a href="transactions.html" data-i18n="nav.txs">Transactions</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="vi" title="Tiếng Việt" aria-label="Tiếng Việt">VI</button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English">EN</button>
+        </div>
+        <a href="https://app.deltanium.com" class="btn btn-primary" data-i18n="nav.cta">Join the network</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="how-main">
+    <section class="block how-hero">
+      <div class="container">
+        <p class="block-kicker" data-i18n="setup.kicker">Run a node</p>
+        <h1 class="block-title how-title" data-i18n="setup.title">Set up a Store node or a Block Creator</h1>
+        <p class="block-copy" data-i18n="setup.copy">Everything is open source. Pick a role, try it on the testnet first, then join mainnet with a free voucher.</p>
+        <nav class="setup-toc">
+          <a href="#need" data-i18n="setup.toc.need">What you need</a>
+          <a href="#store" data-i18n="setup.toc.store">Store node</a>
+          <a href="#blocker" data-i18n="setup.toc.blocker">Block Creator</a>
+          <a href="#keys" data-i18n="setup.toc.keys">Keep your key safe</a>
+          <a href="#paid" data-i18n="setup.toc.paid">Getting paid</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="block" id="need">
+      <div class="container">
+        <h2 class="block-title how-h2" data-i18n="setup.need.title">What you need</h2>
+        <div class="setup-grid">
+          <div class="how-node">
+            <h3 data-i18n="setup.role.store">Store node</h3>
+            <p data-i18n="setup.role.store.p">Keeps encrypted copies of posts and files. Earns 80% of storage fees and 85% of bandwidth fees. The easiest way to start.</p>
+          </div>
+          <div class="how-node">
+            <h3 data-i18n="setup.role.blocker">Block Creator</h3>
+            <p data-i18n="setup.role.blocker.p">Confirms transactions and writes blocks of the shared ledger. Earns the fees of the blocks it writes. Needs very good uptime.</p>
+          </div>
+        </div>
+        <ul class="econ-checks setup-req">
+          <li data-i18n="setup.req1">A machine that stays on 24/7 (VPS or home server), Linux, Windows or macOS.</li>
+          <li data-i18n="setup.req2">.NET 8 SDK and git. MySQL 8 is recommended for production; without it the node stores its data in JSON files.</li>
+          <li data-i18n="setup.req3">A public domain name with HTTPS in front of the node (Caddy, nginx or IIS as a reverse proxy).</li>
+          <li data-i18n="setup.req4">Free disk space for the data you want to hold (Store nodes).</li>
+          <li data-i18n="setup.req5">A free one-time voucher from the public list.</li>
+        </ul>
+        <div class="testnet-actions">
+          <a class="btn btn-primary" href="https://github.com/dlvstudio/deltanium/blob/main/VOUCHERS.md" target="_blank" rel="noopener" data-i18n="setup.voucher">Get a free voucher</a>
+          <a class="btn btn-ghost" href="nodes.html?net=testnet" data-i18n="setup.testnet">See testnet nodes</a>
+        </div>
+        <p class="how-note" data-i18n="setup.testnet.p">Try everything on the testnet first: use https://testnet-api.deltanium.com and set NETWORK_ID=deltanium-test. Testnet data may be reset.</p>
+      </div>
+    </section>
+
+    <section class="block" id="store">
+      <div class="container">
+        <p class="block-kicker" data-i18n="setup.role.store">Store node</p>
+        <h2 class="block-title how-h2" data-i18n="setup.store.title">Run a Store node in 5 steps</h2>
+        <ol class="setup-steps">
+          <li>
+            <h3 data-i18n="setup.st1">Get the code</h3>
+            <p data-i18n="setup.st1.p">Clone the Store and the shared core library side by side in the same folder.</p>
+<pre><code>git clone https://github.com/dlvstudio/deltanium-core.git
+git clone https://github.com/dlvstudio/deltanium-store.git
+cd deltanium-store</code></pre>
+          </li>
+          <li>
+            <h3 data-i18n="setup.st2">Configure it</h3>
+            <p data-i18n="setup.st2.p">Set these environment variables (or the same keys in appsettings / user-secrets). Never commit the voucher or your key.</p>
+<pre><code>export NodeRegistration__ApiUrl="https://api.deltanium.com"
+export NodeRegistration__Endpoint="https://store.your-domain.com"
+export CentralApi__BaseUrl="https://api.deltanium.com"
+export STORE_VOUCHER="PUBLIC-STORE-XX-XXXXXXXX"   # an unused code
+# Recommended for production:
+export Storage__Provider="MySql"
+export ConnectionStrings__Default="Server=localhost;Database=deltanium_store;User Id=...;Password=..."
+# Testnet only:
+# export NETWORK_ID="deltanium-test"   (and use https://testnet-api.deltanium.com above)</code></pre>
+          </li>
+          <li>
+            <h3 data-i18n="setup.st3">Put HTTPS in front</h3>
+            <p data-i18n="setup.st3.p">The node listens on a local port; your reverse proxy serves it at the public HTTPS address you set as the endpoint.</p>
+<pre><code># Caddyfile example
+store.your-domain.com {
+    reverse_proxy localhost:5001
+}</code></pre>
+          </li>
+          <li>
+            <h3 data-i18n="setup.st4">Start it</h3>
+            <p data-i18n="setup.st4.p">On first start the node creates its key and registers itself with the voucher.</p>
+<pre><code>dotnet run -c Release --urls http://localhost:5001</code></pre>
+          </li>
+          <li>
+            <h3 data-i18n="setup.st5">Check it is live</h3>
+            <p data-i18n="setup.st5.p">Open the Nodes page, or ask the network directly. Your node should be listed as online.</p>
+<pre><code>curl -s https://api.deltanium.com/api/explorer/nodes
+curl -s https://store.your-domain.com/api/version</code></pre>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="blocker">
+      <div class="container">
+        <p class="block-kicker" data-i18n="setup.role.blocker">Block Creator</p>
+        <h2 class="block-title how-h2" data-i18n="setup.blocker.title">Run a Block Creator</h2>
+        <p class="block-copy" data-i18n="setup.blocker.p">Same idea, different variables. A Block Creator must trust the network's public keys, published on the Nodes page and in NODE_KEYS.md.</p>
+<pre><code>git clone https://github.com/dlvstudio/deltanium-core.git
+git clone https://github.com/dlvstudio/deltanium-blocker.git
+cd deltanium-blocker
+
+export CENTRAL_API_URL="https://api.deltanium.com"
+export NODE_ENDPOINT="https://blocker.your-domain.com"
+export VOUCHER="PUBLIC-BLOCKER-XX-XXXXXXXX"   # an unused code
+export CENTRAL_API_PUBLIC_KEY="0390329609c78fff2cd895cb3faf30b1fa868085da0e89dbeeff642258773c9191"
+export SUPER_ADMIN_PUBLIC_KEY="021fd57c80fd85156c307e2f1c0bc278ea0eeabac930835ab989803ee2d77165f7"
+export LISTEN_URLS="http://localhost:5003"
+# Recommended: Storage__Provider=MySql and ConnectionStrings__Default=...
+
+dotnet run -c Release</code></pre>
+        <p class="how-note"><a href="https://github.com/dlvstudio/deltanium/blob/main/NODE_KEYS.md" target="_blank" rel="noopener" data-i18n="setup.keys.link">Always check these keys against NODE_KEYS.md and the Nodes page →</a></p>
+      </div>
+    </section>
+
+    <section class="block" id="tcp">
+      <div class="container">
+        <p class="block-kicker" data-i18n="setup.tcp.kicker">Optional</p>
+        <h2 class="block-title how-h2" data-i18n="setup.tcp.title">Add a TCP channel (DLTP)</h2>
+        <p class="block-copy" data-i18n="setup.tcp.p">A node can be reached over HTTPS, over TCP, or both. Browsers only use HTTPS. The desktop and mobile apps prefer TCP and fall back to HTTPS. TCP traffic uses DLTP: TLS on port 7333 with the same signed requests as HTTPS.</p>
+        <ol class="setup-steps">
+          <li>
+            <h3 data-i18n="setup.tcp1">Run the DLTP gateway</h3>
+            <p data-i18n="setup.tcp1.p">It ships in the Store repo. It listens on port 7333, uses the TLS certificate of your HTTPS site, and forwards each request to your node. List your hosts under Gateway:Routes.</p>
+<pre><code>cd deltanium-store/DltpGateway
+# appsettings.json
+#   "Gateway": { "Port": 7333,
+#     "Routes": { "store.your-domain.com": "https://store.your-domain.com" },
+#     "Certificates": { "store.your-domain.com": {
+#       "Pem": "/etc/letsencrypt/live/store.your-domain.com/fullchain.pem",
+#       "Key": "/etc/letsencrypt/live/store.your-domain.com/privkey.pem" } } }
+# On Windows/IIS leave out "Certificates": the gateway uses the site's certificate.
+dotnet publish -c Release -o /opt/deltanium-dltp
+dotnet /opt/deltanium-dltp/Deltanium.DltpGateway.dll</code></pre>
+          </li>
+          <li>
+            <h3 data-i18n="setup.tcp2">Publish the TCP address</h3>
+            <p data-i18n="setup.tcp2.p">Set it before the node registers, and open TCP port 7333 in your firewall.</p>
+<pre><code># Store
+export NodeRegistration__TcpEndpoint="tcps://store.your-domain.com:7333"
+# Block Creator
+export NODE_TCP_ENDPOINT="tcps://blocker.your-domain.com:7333"</code></pre>
+          </li>
+        </ol>
+        <p class="how-note" data-i18n="setup.tcp.note">A TCP-only Store cannot serve web readers. That is why every file must also have at least one replica on a Store that has HTTPS.</p>
+      </div>
+    </section>
+
+    <section class="block" id="keys">
+      <div class="container split">
+        <div>
+          <h2 class="block-title how-h2" data-i18n="setup.keys.title">Keep your node key safe</h2>
+          <ul class="plain-list">
+            <li><strong data-i18n="setup.k1.t">It is your node's identity</strong><span data-i18n="setup.k1.p">On first start the node writes node_info.json with its private key. Whoever has it can act as your node.</span></li>
+            <li><strong data-i18n="setup.k2.t">Never commit or share it</strong><span data-i18n="setup.k2.p">Keep node_info.json out of git and backups others can read. Make an offline copy for yourself.</span></li>
+            <li><strong data-i18n="setup.k3.t">Better: a secret, not a file</strong><span data-i18n="setup.k3.p">Set the key in NODE_PRIVATE_KEY from your secret store; the node then keeps no private key on disk.</span></li>
+          </ul>
+        </div>
+        <aside class="how-lock">
+          <p class="quiet-label" data-i18n="setup.lost.k">If it leaks</p>
+          <p class="quiet-copy" data-i18n="setup.lost.p">Tell the maintainers: the old key is deactivated on Central and you register a new one. Revoked keys are listed in NODE_KEYS.md.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="block" id="paid">
+      <div class="container">
+        <h2 class="block-title how-h2" data-i18n="setup.paid.title">Getting paid</h2>
+        <ul class="econ-checks">
+          <li data-i18n="setup.p1">Fees are paid in D to your node's account (its public key), monthly for storage, after storage checks pass.</li>
+          <li data-i18n="setup.p2">1 D = 1 VND. Verified operators can cash out to VND (1% fee, from 100,000 D).</li>
+          <li data-i18n="setup.p3">Node deposits and slashing are planned for a later phase and are not required now.</li>
+        </ul>
+        <p class="how-note"><a href="index.html#economy" data-i18n="setup.calc">Estimate what your node could earn →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>Deltanium · 2026</div>
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html" data-i18n="nav.how">How it works</a>
+        <a href="node-setup.html" data-i18n="nav.setup">Run a node</a>
+        <a href="nodes.html" data-i18n="nav.nodes">Nodes</a>
+        <a href="https://github.com/dlvstudio" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=20261119e"></script>
+</body>
+</html>

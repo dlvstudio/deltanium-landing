@@ -27,6 +27,18 @@
 
   let last = null;
 
+  // A node may publish HTTPS, DLTP (tcps://host:port) or both. Browsers only use HTTPS;
+  // desktop and mobile apps prefer DLTP.
+  function nodeCell(n) {
+    const name = n.endpoint
+      ? `<a href="${esc(n.endpoint)}/api/version" target="_blank" rel="noopener">${esc(host(n.endpoint))}</a>`
+      : esc(host(String(n.tcpEndpoint || "").replace(/^tcps?:/, "https:")));
+    const ch = [];
+    if (n.endpoint) ch.push(`<span class="chan" title="${esc(n.endpoint)}">HTTPS</span>`);
+    if (n.tcpEndpoint) ch.push(`<span class="chan chan-tcp" title="${esc(n.tcpEndpoint)}">TCP</span>`);
+    return `${name}<div class="chans">${ch.join("")}</div>`;
+  }
+
   function pill(n, expectedNet) {
     if (!n.online) return `<span class="pill pill-down">${esc(t("nodes.down", "Offline"))}${n.error ? " · " + esc(n.error) : ""}</span>`;
     if (expectedNet && n.network && n.network !== expectedNet)
@@ -40,7 +52,7 @@
       .map((n) => {
         const behind = chain && n.height != null && tip >= 0 && n.height < tip ? ` <small>(−${tip - n.height})</small>` : "";
         return `<tr>
-          <td><a href="${esc(n.endpoint)}/api/version" target="_blank" rel="noopener">${esc(host(n.endpoint))}</a></td>
+          <td>${nodeCell(n)}</td>
           <td>${pill(n, expectedNet)}</td>
           ${chain ? `<td>${n.height == null ? "—" : esc(n.height) + behind}${n.mempool ? ` <small>· mempool ${esc(n.mempool)}</small>` : ""}</td>` : ""}
           <td>${n.version ? esc(n.version) : "—"}${n.commit ? ` <code>${esc(n.commit)}</code>` : ""}</td>

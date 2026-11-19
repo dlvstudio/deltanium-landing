@@ -225,6 +225,9 @@
 .node-table a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--line); }
 .node-table a:hover { color: var(--sand-bright); }
 .node-table small { color: var(--muted); }
+.chans { display: flex; gap: 4px; margin-top: 4px; }
+.chan { font-size: 10px; letter-spacing: 0.06em; padding: 1px 6px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.chan-tcp { color: var(--sand-bright); border-color: rgba(214, 186, 140, 0.4); }
 
 .pill {
   display: inline-block;
