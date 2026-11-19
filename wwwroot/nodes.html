@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deltanium | Nodes</title>
   <meta name="description" content="Live status of Deltanium Block Creator and Store nodes." />
-  <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/transactions.css" />
+  <link rel="stylesheet" href="css/index.css?v=20261119a" />
+  <link rel="stylesheet" href="css/transactions.css?v=20261119a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
@@ -17,6 +17,7 @@
       <a class="brand" href="index.html">Deltanium</a>
       <nav>
         <ul class="nav-links">
+          <li><a href="index.html#economy" data-i18n="nav.economy">Earn</a></li>
           <li><a href="index.html#why" data-i18n="nav.why">Why Deltanium</a></li>
           <li><a href="transactions.html" data-i18n="nav.txs">Transactions</a></li>
           <li><a href="nodes.html" data-i18n="nav.nodes" aria-current="page">Nodes</a></li>
@@ -60,6 +61,23 @@
         <button type="button" class="btn btn-ghost btn-small" id="refresh" data-i18n="nodes.refresh">Refresh</button>
       </div>
       <p class="tx-error" id="errorLine" hidden></p>
+
+      <h2 class="node-h2" data-i18n="nodes.root.title">Network root keys</h2>
+      <p class="tx-meta root-copy" data-i18n="nodes.root.copy">Use these public keys to check that decisions, Store tokens and admin approvals really come from the network.</p>
+      <div class="tx-table-wrap">
+        <table class="tx-table node-table root-table">
+          <thead>
+            <tr>
+              <th data-i18n="nodes.col.role">Role</th>
+              <th data-i18n="nodes.col.node">Node</th>
+              <th data-i18n="nodes.col.version">Version</th>
+              <th data-i18n="nodes.col.key">Public key</th>
+            </tr>
+          </thead>
+          <tbody id="rootBody"></tbody>
+        </table>
+      </div>
+      <p class="tx-meta"><a href="https://github.com/dlvstudio/deltanium/blob/main/NODE_KEYS.md" target="_blank" rel="noopener" data-i18n="nodes.root.github">Full public key list on GitHub</a></p>
 
       <h2 class="node-h2" data-i18n="nodes.blockers">Block Creators</h2>
       <div class="tx-table-wrap">
@@ -110,8 +128,8 @@
     </div>
   </footer>
 
-  <script src="js/network.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/nodes.js"></script>
+  <script src="js/network.js?v=20261119a"></script>
+  <script src="js/i18n.js?v=20261119a"></script>
+  <script src="js/nodes.js?v=20261119a"></script>
 </body>
 </html>

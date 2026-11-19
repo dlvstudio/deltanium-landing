@@ -88,6 +88,57 @@
     }
   }
 
+  // Root keys: Central API + Super Admin. /explorer/keys is new; older APIs only expose the Central key.
+  let roots = null;
+  function renderRoots() {
+    if (!roots) return;
+    const keyCell = (k) =>
+      k
+        ? `<code class="key-full">${esc(k)}</code> <button type="button" class="btn btn-ghost btn-small copy-key" data-key="${esc(k)}">${esc(t("nodes.copy", "Copy"))}</button>`
+        : `<span class="tx-meta">${esc(t("nodes.notset", "Not published yet"))}</span>`;
+    $("rootBody").innerHTML = `
+      <tr>
+        <td><strong>${esc(t("nodes.role.central", "Central API"))}</strong><br><small>${esc(t("nodes.role.central.p", ""))}</small></td>
+        <td><a href="${esc(roots.endpoint)}/api/version" target="_blank" rel="noopener">${esc(host(roots.endpoint))}</a></td>
+        <td>${roots.version ? esc(roots.version) : "—"}${roots.commit ? ` <code>${esc(String(roots.commit).slice(0, 7))}</code>` : ""}</td>
+        <td>${keyCell(roots.central)}</td>
+      </tr>
+      <tr>
+        <td><strong>${esc(t("nodes.role.super", "Super Admin"))}</strong><br><small>${esc(t("nodes.role.super.p", ""))}</small></td>
+        <td>—</td>
+        <td>—</td>
+        <td>${keyCell(roots.superAdmin)}</td>
+      </tr>`;
+  }
+  async function loadRoots() {
+    const base = API.replace(/\/api$/, "");
+    try {
+      const r = await fetch(`${API}/explorer/keys`, { cache: "no-store" });
+      if (r.ok) {
+        const k = await r.json();
+        roots = { endpoint: base, central: k.central && k.central.publicKey, version: k.central && k.central.version,
+                  commit: k.central && k.central.commit, superAdmin: k.superAdmin && k.superAdmin.publicKey };
+        return renderRoots();
+      }
+    } catch (_) {}
+    try {
+      const [dk, v] = await Promise.all([
+        fetch(`${API}/blockcreatornode/decision-key`, { cache: "no-store" }).then((r) => r.json()),
+        fetch(`${API}/version`, { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+      ]);
+      roots = { endpoint: base, central: dk.publicKey, version: v.version, commit: v.commit, superAdmin: "" };
+      renderRoots();
+    } catch (_) {}
+  }
+  document.addEventListener("click", async (e) => {
+    const b = e.target.closest(".copy-key");
+    if (!b) return;
+    try { await navigator.clipboard.writeText(b.dataset.key); b.textContent = t("nodes.copied", "Copied"); } catch (_) {}
+    setTimeout(() => (b.textContent = t("nodes.copy", "Copy")), 1500);
+  });
+  document.addEventListener("deltanium:lang", renderRoots);
+  loadRoots();
+
   $("refresh").addEventListener("click", load);
   document.addEventListener("deltanium:lang", () => last && render(last));
   load();

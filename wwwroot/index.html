@@ -7,7 +7,7 @@
     <title>Deltanium | Your social life, only yours</title>
     <meta name="description"
         content="Deltanium is a social network where you hold the keys. Post, follow, and chat without giving up your privacy.">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=20261119a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
             <a class="brand" href="#">Deltanium</a>
             <nav>
                 <ul class="nav-links">
+                    <li><a href="#economy" data-i18n="nav.economy">Earn</a></li>
                     <li><a href="#why" data-i18n="nav.why">Why Deltanium</a></li>
                     <li><a href="#features" data-i18n="nav.features">What you can do</a></li>
                     <li><a href="transactions.html" data-i18n="nav.txs">Transactions</a></li>
@@ -55,12 +56,17 @@
             <div class="container hero-grid">
                 <div class="hero-copy">
                     <h1 class="hero-brand">Deltanium<em>.</em></h1>
-                    <p class="hero-line" data-i18n="hero.line">Your social life — without selling your privacy.</p>
-                    <p class="hero-sub" data-i18n="hero.sub">Post, follow friends, and chat on a network you actually own. Your keys stay with you. We never read your private content.</p>
+                    <p class="hero-line" data-i18n="hero.line">The social network you own — and get paid to run.</p>
+                    <p class="hero-sub" data-i18n="hero.sub">Post and chat privately: your keys stay with you and we never read your private content. Or run a node and earn most of the fees the network collects — no ads, no data sold.</p>
                     <div class="hero-actions">
                         <a href="#join" class="btn btn-primary" data-i18n="hero.cta1">Become a user</a>
-                        <a href="#why" class="btn btn-ghost" data-i18n="hero.cta2">Why it matters</a>
+                        <a href="#economy" class="btn btn-earn" data-i18n="hero.cta.node">Run a node, earn fees</a>
                     </div>
+                    <ul class="hero-stats">
+                        <li><strong>80%</strong><span data-i18n="hero.stat1">of storage fees go to Store nodes</span></li>
+                        <li><strong>90%</strong><span data-i18n="hero.stat2">of subscriptions and tips go to creators</span></li>
+                        <li><strong>1 D = 1 VND</strong><span data-i18n="hero.stat3">backed 1:1, cash out to VND</span></li>
+                    </ul>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
                     <div class="story-card story-card-a">
@@ -78,6 +84,140 @@
                             <span class="story-body" data-i18n="visual.chat">Private chat. End to end. No ads in between.</span>
                         </div>
                     </div>
+                    <div class="story-card story-card-node">
+                        <div class="story-avatar story-avatar-node"></div>
+                        <div class="story-lines">
+                            <span class="story-name" data-i18n="visual.node">Your Store node</span>
+                            <span class="story-body" data-i18n="visual.nodebody">Keeps encrypted copies for the network. Paid monthly from storage escrow.</span>
+                        </div>
+                        <span class="story-seal story-seal-earn" data-i18n="visual.nodeseal">+80% of storage fees</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="economy" class="block">
+            <div class="container">
+                <p class="block-kicker" data-i18n="eco.kicker">Network economy</p>
+                <h2 class="block-title econ-title" data-i18n="eco.title">A social network that pays the people who run it.</h2>
+                <p class="block-copy" data-i18n="eco.copy">Big platforms keep the ad money and sell your attention. Deltanium has no ads: people pay small fees in D for storage, bandwidth and transactions, and most of every fee goes straight to whoever provides that service.</p>
+
+                <div class="econ-grid">
+                    <article class="econ-card">
+                        <p class="econ-share">80%</p>
+                        <h3 data-i18n="eco.store.t">Run a Store node</h3>
+                        <p data-i18n="eco.store.p">Keep encrypted copies of posts and files. You earn 80% of storage fees (800 D per GB per month, per copy) and 85% of bandwidth fees (300 D per GB served), released monthly from escrow.</p>
+                    </article>
+                    <article class="econ-card">
+                        <p class="econ-share" data-i18n="eco.blocker.share">Fees</p>
+                        <h3 data-i18n="eco.blocker.t">Run a Block Creator</h3>
+                        <p data-i18n="eco.blocker.p">Validate and seal transactions into blocks. Transaction fees collect in the block fee pool and are paid to the Block Creator that seals the block.</p>
+                    </article>
+                    <article class="econ-card">
+                        <p class="econ-share">90%</p>
+                        <h3 data-i18n="eco.creator.t">Create content</h3>
+                        <p data-i18n="eco.creator.p">Set a monthly subscription or receive tips. You keep 90% — no ad algorithm decides what you are worth.</p>
+                    </article>
+                    <article class="econ-card">
+                        <p class="econ-share">200 MB</p>
+                        <h3 data-i18n="eco.user.t">Just use it</h3>
+                        <p data-i18n="eco.user.p">Every new account gets 200 MB of storage and 2 GB of downloads a month free, paid for by the network fund. Reactions, comments and chats stay free within a fair monthly allowance.</p>
+                    </article>
+                </div>
+
+                <div class="split econ-split">
+                    <div>
+                        <h3 class="econ-h3" data-i18n="eco.flow.t">Where every 100 D of storage fees goes</h3>
+                        <div class="econ-bar" role="img" aria-label="80 node, 10 network fund, 10 protocol">
+                            <span class="econ-bar-node" style="flex:80">80</span>
+                            <span class="econ-bar-fund" style="flex:10">10</span>
+                            <span class="econ-bar-ops" style="flex:10">10</span>
+                        </div>
+                        <ul class="econ-legend">
+                            <li><i class="dot dot-node"></i><span data-i18n="eco.flow.node">Node operators who store the data</span></li>
+                            <li><i class="dot dot-fund"></i><span data-i18n="eco.flow.fund">Network fund: pays the free tier and repairs lost copies</span></li>
+                            <li><i class="dot dot-ops"></i><span data-i18n="eco.flow.ops">Protocol operations</span></li>
+                        </ul>
+
+                        <h3 class="econ-h3" data-i18n="eco.d.t">D: a stable unit, not a lottery ticket</h3>
+                        <ul class="plain-list">
+                            <li>
+                                <strong data-i18n="eco.d1.t">1 D = 1 VND</strong>
+                                <span data-i18n="eco.d1.p">Every D in circulation is backed 1:1 by VND in reserve. The reserve and circulating supply are public (api.deltanium.com/api/wallet/reserve).</span>
+                            </li>
+                            <li>
+                                <strong data-i18n="eco.d2.t">Earnings you can cash out</strong>
+                                <span data-i18n="eco.d2.p">Verified node operators and creators can redeem D to VND (1% fee, from 100,000 D).</span>
+                            </li>
+                            <li>
+                                <strong data-i18n="eco.d3.t">Books anyone can check</strong>
+                                <span data-i18n="eco.d3.p">The ledger is anchored into blocks, so balances can be proven against the chain.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <aside class="quiet-panel econ-calc" aria-labelledby="calc-title">
+                        <p class="quiet-label" data-i18n="eco.calc.kicker">Estimate</p>
+                        <p class="quiet-title" id="calc-title" data-i18n="eco.calc.t">What a Store node could earn</p>
+                        <label class="econ-field">
+                            <span data-i18n="eco.calc.stored">Paid data you store (GB)</span>
+                            <input id="calc-stored" type="number" min="0" step="10" value="500" inputmode="numeric">
+                        </label>
+                        <label class="econ-field">
+                            <span data-i18n="eco.calc.served">Data you serve per month (GB)</span>
+                            <input id="calc-served" type="number" min="0" step="10" value="1000" inputmode="numeric">
+                        </label>
+                        <dl class="econ-out">
+                            <div><dt data-i18n="eco.calc.storage">Storage</dt><dd id="calc-out-storage">–</dd></div>
+                            <div><dt data-i18n="eco.calc.bandwidth">Bandwidth</dt><dd id="calc-out-bw">–</dd></div>
+                            <div class="econ-total"><dt data-i18n="eco.calc.total">Per month</dt><dd id="calc-out-total">–</dd></div>
+                            <div><dt data-i18n="eco.calc.bond">Bond to post</dt><dd id="calc-out-bond">–</dd></div>
+                        </dl>
+                        <p class="quiet-copy econ-fine" data-i18n="eco.calc.note">Gross D at today's prices, before your hardware and power costs. Paid only for data that actually exists on the network: full pay at 95%+ passed storage checks, partial at 80–95%, nothing below 80% plus a 10% bond slash.</p>
+                    </aside>
+                </div>
+
+                <div class="econ-need">
+                    <div>
+                        <h3 class="econ-h3" data-i18n="eco.need.t">What you need to run a node</h3>
+                        <ul class="econ-checks">
+                            <li data-i18n="eco.need.r1">A machine that stays on 24/7 — a VPS or a computer at home.</li>
+                            <li data-i18n="eco.need.r2">A public address with HTTPS (a domain name pointing to that machine).</li>
+                            <li data-i18n="eco.need.r3">.NET 8 and MySQL installed.</li>
+                            <li data-i18n="eco.need.r4">Free disk space: as much as you want to offer.</li>
+                            <li data-i18n="eco.need.r5">A free voucher: a one-time registration code from the public list.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="econ-h3" data-i18n="eco.steps.t">Up and running in 4 steps</h3>
+                        <ol class="econ-steps">
+                            <li data-i18n="eco.steps.s1">Pick an unused voucher from the public list.</li>
+                            <li data-i18n="eco.steps.s2">Download the node code from GitHub.</li>
+                            <li data-i18n="eco.steps.s3">Set your address and voucher, then start the node — it registers itself.</li>
+                            <li data-i18n="eco.steps.s4">Find your node on the live Nodes page.</li>
+                        </ol>
+                        <div class="econ-live" id="econ-live" hidden>
+                            <p class="quiet-label" data-i18n="eco.live.label">Live on mainnet now</p>
+                            <p class="econ-live-nums"><strong id="live-stores">–</strong> <span data-i18n="eco.live.stores">Store nodes</span> · <strong id="live-blockers">–</strong> <span data-i18n="eco.live.blockers">Block Creators</span></p>
+                            <p class="econ-fine" data-i18n="eco.live.note">The network is small — early nodes take a bigger share of new data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="econ-flywheel">
+                    <h3 class="econ-h3" data-i18n="eco.grow.t">Why grow the network now</h3>
+                    <ol class="econ-steps">
+                        <li data-i18n="eco.grow.s1">More people post and chat → more data to store and serve.</li>
+                        <li data-i18n="eco.grow.s2">More paid storage and traffic → more fees flowing to nodes.</li>
+                        <li data-i18n="eco.grow.s3">More nodes → faster, more resilient network with more copies of everyone's data.</li>
+                        <li data-i18n="eco.grow.s4">A better network → more people join. Early operators are there as it starts to turn.</li>
+                    </ol>
+                    <div class="testnet-actions">
+                        <a href="https://github.com/dlvstudio/deltanium/blob/main/VOUCHERS.md" class="btn btn-primary" data-i18n="eco.cta.node">Get a node voucher</a>
+                        <a href="nodes.html" class="btn btn-ghost" data-i18n="eco.cta.nodes">See live nodes</a>
+                        <a href="https://app.deltanium.com" class="btn btn-ghost" data-i18n="eco.cta.app">Start as a user</a>
+                    </div>
+                    <p class="join-note econ-risk" data-i18n="eco.risk">Honest note: Deltanium is early and D circulation has only just started. Node income depends on real usage, uptime and storage checks, and is not guaranteed. D is a payment unit for network services, not a security or a promise of profit.</p>
                 </div>
             </div>
         </section>
@@ -186,11 +326,11 @@
 
         <section class="cta-band">
             <div class="container cta">
-                <h2 data-i18n="cta.title">Come for the people. Stay for the privacy.</h2>
+                <h2 data-i18n="cta.title">Come for friends. Stay for privacy. Run a node to share in it.</h2>
                 <p data-i18n="cta.copy">Deltanium is social media that treats you like an owner — not a product. Join the network and bring someone with you.</p>
                 <div class="hero-actions">
                     <a href="#join" class="btn btn-primary" data-i18n="cta.review">Join now</a>
-                    <a href="#features" class="btn btn-ghost" data-i18n="cta.operate">See what you can do</a>
+                    <a href="#economy" class="btn btn-earn" data-i18n="cta.operate">Run a node, get paid</a>
                 </div>
             </div>
         </section>
@@ -209,7 +349,8 @@
         </div>
     </footer>
 
-    <script src="js/i18n.js"></script>
+    <script src="js/i18n.js?v=20261119a"></script>
+    <script src="js/economy.js?v=20261119a"></script>
 </body>
 
 </html>

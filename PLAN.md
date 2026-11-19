@@ -15,6 +15,7 @@ Landing copy tracks the current system architecture in App `ARCHITECT.MD` / `CHA
 | Chat online P2P + offline Store files | CHAT.md §2 |
 | Store / Block Creator voucher join | ARCHITECT §4.1.2 |
 | InternalApi for Store/Blocker | ARCHITECT §4.1.1 |
+| Economy section: fee splits, prices, bonds, proof pay, 1 D = 1 VND reserve | API `EconomicsService` / `WalletService` defaults, live `GET /api/wallet/economics` |
 
 ## Intentionally removed / corrected
 
@@ -31,6 +32,7 @@ Landing copy tracks the current system architecture in App `ARCHITECT.MD` / `CHA
 4. Chat — online WebRTC / offline Store + IDOR
 5. Ecosystem — App, Central, Store, Block Creator, Core, User
 6. Nodes — operator join path + local port map
+7. Network economy (`#economy`) — who earns what, fee flow, D reserve, Store income estimate (`js/economy.js`), risk note
 
 ## Status
 
