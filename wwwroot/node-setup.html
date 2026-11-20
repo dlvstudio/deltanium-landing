@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deltanium | Run a node</title>
   <meta name="description" content="Step-by-step guide to run a Deltanium Store node or Block Creator and earn from network fees." />
-  <link rel="stylesheet" href="css/index.css?v=20261119f" />
-  <link rel="stylesheet" href="css/how.css?v=20261119f" />
+  <link rel="stylesheet" href="css/index.css?v=20261119g" />
+  <link rel="stylesheet" href="css/how.css?v=20261119g" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
@@ -44,6 +44,7 @@
           <a href="#need" data-i18n="setup.toc.need">What you need</a>
           <a href="#store" data-i18n="setup.toc.store">Store node</a>
           <a href="#blocker" data-i18n="setup.toc.blocker">Block Creator</a>
+          <a href="#tcp" data-i18n="setup.toc.tcp">TCP channel</a>
           <a href="#keys" data-i18n="setup.toc.keys">Keep your key safe</a>
           <a href="#paid" data-i18n="setup.toc.paid">Getting paid</a>
         </nav>
@@ -152,10 +153,20 @@ dotnet run -c Release</code></pre>
       <div class="container">
         <p class="block-kicker" data-i18n="setup.tcp.kicker">Optional</p>
         <h2 class="block-title how-h2" data-i18n="setup.tcp.title">Add a TCP channel (DLTP)</h2>
-        <p class="block-copy" data-i18n="setup.tcp.p">A node can be reached over HTTPS, over TCP, or both. Browsers only use HTTPS. The desktop and mobile apps prefer TCP and fall back to HTTPS. TCP traffic uses DLTP: TLS on port 7333 with the same signed requests as HTTPS.</p>
+        <p class="block-copy" data-i18n="setup.tcp.p">A node can be reached over HTTPS, over TCP, or both. Browsers only use HTTPS. The desktop and mobile apps prefer TCP and fall back to HTTPS. TCP traffic uses DLTP: TLS with the same signed requests as HTTPS.</p>
         <ol class="setup-steps">
           <li>
-            <h3 data-i18n="setup.tcp1">Run the DLTP gateway</h3>
+            <h3 data-i18n="setup.tcp.home">On a home or personal computer: just an IP address</h3>
+            <p data-i18n="setup.tcp.home.p">No domain, certificate, IIS or reverse proxy needed. The node opens the TCP port itself and proves who it is with its node key, which the apps check against the key registered on Central. "auto" means Central records the public IP it sees your node connect from, and the node re-sends it every 30 minutes, so a changing home IP keeps working.</p>
+<pre><code># Store (or Block Creator: same two variables)
+export Dltp__Port="7333"
+export Dltp__PublicEndpoint="tcps://auto:7333"    # or tcps://&lt;your public IP&gt;:7333
+
+dotnet run -c Release --urls http://localhost:5001</code></pre>
+            <p data-i18n="setup.tcp.home.nat">Then forward TCP port 7333 on your router to this computer and allow it in the firewall. If your provider puts you behind carrier-grade NAT (several homes share one public IP), forwarding cannot work: ask the provider for a public IP, or run the node on a small VPS.</p>
+          </li>
+          <li>
+            <h3 data-i18n="setup.tcp1">On a server with a domain: the DLTP gateway</h3>
             <p data-i18n="setup.tcp1.p">It ships in the Store repo. It listens on port 7333, uses the TLS certificate of your HTTPS site, and forwards each request to your node. List your hosts under Gateway:Routes.</p>
 <pre><code>cd deltanium-store/DltpGateway
 # appsettings.json
@@ -166,15 +177,11 @@ dotnet run -c Release</code></pre>
 #       "Key": "/etc/letsencrypt/live/store.your-domain.com/privkey.pem" } } }
 # On Windows/IIS leave out "Certificates": the gateway uses the site's certificate.
 dotnet publish -c Release -o /opt/deltanium-dltp
-dotnet /opt/deltanium-dltp/Deltanium.DltpGateway.dll</code></pre>
-          </li>
-          <li>
-            <h3 data-i18n="setup.tcp2">Publish the TCP address</h3>
-            <p data-i18n="setup.tcp2.p">Set it before the node registers, and open TCP port 7333 in your firewall.</p>
-<pre><code># Store
-export NodeRegistration__TcpEndpoint="tcps://store.your-domain.com:7333"
-# Block Creator
-export NODE_TCP_ENDPOINT="tcps://blocker.your-domain.com:7333"</code></pre>
+dotnet /opt/deltanium-dltp/Deltanium.DltpGateway.dll
+
+# Then publish the address (before the node registers):
+export NodeRegistration__TcpEndpoint="tcps://store.your-domain.com:7333"   # Store
+export NODE_TCP_ENDPOINT="tcps://blocker.your-domain.com:7333"            # Block Creator</code></pre>
           </li>
         </ol>
         <p class="how-note" data-i18n="setup.tcp.note">A TCP-only Store cannot serve web readers. That is why every file must also have at least one replica on a Store that has HTTPS.</p>
@@ -224,6 +231,6 @@ export NODE_TCP_ENDPOINT="tcps://blocker.your-domain.com:7333"</code></pre>
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=20261119f"></script>
+  <script src="js/i18n.js?v=20261119g"></script>
 </body>
 </html>
