@@ -39,7 +39,7 @@
       <div class="container">
         <p class="block-kicker" data-i18n="setup.kicker">Run a node</p>
         <h1 class="block-title how-title" data-i18n="setup.title">Set up a Store node or a Block Creator</h1>
-        <p class="block-copy" data-i18n="setup.copy">Everything is open source. Pick a role, try it on the testnet first, then join mainnet with a free voucher.</p>
+        <p class="block-copy" data-i18n="setup.copy">Everything is open source. Pick a role, try it on the testnet first, then join mainnet with a public voucher, a 100,000 VND registration fee and the Super Admin's approval.</p>
         <nav class="setup-toc">
           <a href="#install" data-i18n="setup.toc.install">Quick install</a>
           <a href="#need" data-i18n="setup.toc.need">What you need</a>
@@ -56,7 +56,7 @@
       <div class="container">
         <p class="block-kicker" data-i18n="setup.quick.kicker">Easiest</p>
         <h2 class="block-title how-h2" data-i18n="setup.quick.title">Install with one download</h2>
-        <p class="block-copy" data-i18n="setup.quick.p">Ready-to-run packages for Windows, Linux and macOS: no .NET, domain or web server needed. The installer asks for the network (mainnet or testnet), your voucher and how the network reaches you (your public IP by default), shows the network keys to compare, then runs the node as a service that starts with the computer.</p>
+        <p class="block-copy" data-i18n="setup.quick.p">Ready-to-run packages for Windows, Linux and macOS: no .NET, domain or web server needed. The installer asks for the network (mainnet or testnet), your voucher and how the network reaches you (your public IP by default), shows the network keys to compare, then runs the node as a service that starts with the computer. After the first start it prints the registration fee and transfer note; the node is listed once the Super Admin approves the payment and the network reaches it.</p>
         <div class="dl-table">
           <div class="dl-row">
             <strong data-i18n="setup.role.store">Store node</strong>
@@ -106,10 +106,10 @@ sudo ./install.sh --network testnet      # Linux / macOS</code></pre>
           <li data-i18n="setup.req2">.NET 8 SDK and git. MySQL 8 is recommended for production; without it the node stores its data in JSON files.</li>
           <li data-i18n="setup.req3">A public domain name with HTTPS in front of the node (Caddy, nginx or IIS as a reverse proxy).</li>
           <li data-i18n="setup.req4">Free disk space for the data you want to hold (Store nodes).</li>
-          <li data-i18n="setup.req5">A free one-time voucher from the public list.</li>
+          <li data-i18n="setup.req5">A one-time voucher from the public list, and the 100,000 VND registration fee (bank transfer or PayPal), approved by the Super Admin.</li>
         </ul>
         <div class="testnet-actions">
-          <a class="btn btn-primary" href="https://github.com/dlvstudio/deltanium/blob/main/VOUCHERS.md" target="_blank" rel="noopener" data-i18n="setup.voucher">Get a free voucher</a>
+          <a class="btn btn-primary" href="https://github.com/dlvstudio/deltanium/blob/main/VOUCHERS.md" target="_blank" rel="noopener" data-i18n="setup.voucher">Get a voucher</a>
           <a class="btn btn-ghost" href="nodes.html?net=testnet" data-i18n="setup.testnet">See testnet nodes</a>
         </div>
         <p class="how-note" data-i18n="setup.testnet.p">Try everything on the testnet first: use https://testnet-api.deltanium.com and set NETWORK_ID=deltanium-test. Testnet data may be reset.</p>
@@ -151,7 +151,7 @@ store.your-domain.com {
           </li>
           <li>
             <h3 data-i18n="setup.st4">Start it</h3>
-            <p data-i18n="setup.st4.p">On first start the node creates its key and registers itself with the voucher.</p>
+            <p data-i18n="setup.st4.p">On first start the node creates its key and sends a registration signed with that key. Central answers with the fee and the transfer note (NODE…): pay it, the Super Admin approves it, and the network activates the node as soon as it answers on its address. Status: /api/noderegistration/{node public key}.</p>
 <pre><code>dotnet run -c Release --urls http://localhost:5001</code></pre>
           </li>
           <li>
