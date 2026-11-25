@@ -151,7 +151,7 @@
       "eco.creator.p": "Set a monthly subscription or receive tips. You keep 90% — no ad algorithm decides what you are worth.",
       "eco.user.t": "Pay for what you store",
       "eco.user.p":
-        "Storage costs 800 D (800 VND) per GB per month per copy, paid from your wallet. Every item you store (post, reaction, comment, message) costs at least 1 D, and the app shows the exact amount before it is charged.",
+        "Storage costs 800 D (800 VND) per GB per month per copy, paid from your wallet. Every item you store (post, reaction, comment, message) costs at least 0.1 D, and the app shows the exact amount before it is charged.",
       "eco.flow.t": "Where every 100 D of storage fees goes",
       "eco.flow.node": "Node operators who store the data",
       "eco.flow.fund": "Network fund: repairs lost copies and keeps the network running",
@@ -533,7 +533,7 @@
       "eco.creator.p": "Đặt gói đăng ký hằng tháng hoặc nhận tip. Bạn giữ 90% — không thuật toán quảng cáo nào quyết định bạn đáng giá bao nhiêu.",
       "eco.user.t": "Dùng bao nhiêu trả bấy nhiêu",
       "eco.user.p":
-        "Lưu trữ 800 D (800 VND) mỗi GB mỗi tháng cho mỗi bản sao, trả từ ví. Mỗi mục được lưu (bài viết, reaction, bình luận, tin nhắn) tốn ít nhất 1 D, và app hiện đúng số tiền trước khi trừ.",
+        "Lưu trữ 800 D (800 VND) mỗi GB mỗi tháng cho mỗi bản sao, trả từ ví. Mỗi mục được lưu (bài viết, reaction, bình luận, tin nhắn) tốn ít nhất 0,1 D, và app hiện đúng số tiền trước khi trừ.",
       "eco.flow.t": "Mỗi 100 D phí lưu trữ đi về đâu",
       "eco.flow.node": "Người vận hành node lưu dữ liệu",
       "eco.flow.fund": "Quỹ mạng: khôi phục bản sao bị mất và duy trì mạng lưới",
