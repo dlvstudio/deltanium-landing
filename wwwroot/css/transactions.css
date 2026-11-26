@@ -117,6 +117,25 @@
   max-height: 22rem;
 }
 
+.tx-terms {
+  margin-top: 1.5rem;
+}
+
+.tx-terms h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.tx-terms-help {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.tx-terms tr.is-match td {
+  background: rgba(214, 180, 120, 0.14);
+}
+
 @media (max-width: 720px) {
   .tx-field input,
   .tx-field select {

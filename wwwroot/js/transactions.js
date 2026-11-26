@@ -6,6 +6,65 @@
   let total = 0;
 
   const $ = (id) => document.getElementById(id);
+  const tr = (key, args = {}) => {
+    let v = (window.DeltaniumI18n && window.DeltaniumI18n.t(key)) || key;
+    for (const [k, x] of Object.entries(args)) v = v.replace(`{${k}}`, x);
+    return v;
+  };
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  /** StorageTerm data.terms is a JSON string of { fileId, status, paidUntil, deleteAfter, blocks? }. */
+  function parseTerms(data) {
+    const raw = data && (data.terms ?? data.Terms);
+    if (typeof raw !== "string") return null;
+    try {
+      const list = JSON.parse(raw);
+      return Array.isArray(list) ? list : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function fmtDate(ts) {
+    if (!ts) return "—";
+    try {
+      return new Date(ts * 1000).toLocaleDateString(undefined, { year: "numeric", month: "2-digit", day: "2-digit" });
+    } catch {
+      return String(ts);
+    }
+  }
+
+  function statusLabel(status) {
+    const key = "tx.terms.st." + status;
+    const label = tr(key);
+    return label === key ? status : label;
+  }
+
+  function renderTerms(terms, q) {
+    const view = $("termView");
+    const needle = (q || "").toLowerCase();
+    const hit = (t) => needle.length > 0 && String(t.fileId || "").toLowerCase().includes(needle);
+    const rows = [...terms].sort((a, b) => (hit(b) ? 1 : 0) - (hit(a) ? 1 : 0));
+    view.innerHTML = `
+      <h3>${esc(tr("tx.terms.title"))} · ${esc(tr("tx.terms.items", { n: String(terms.length) }))}</h3>
+      <p class="tx-terms-help">${esc(tr("tx.terms.help"))}</p>
+      <div class="tx-table-wrap"><table class="tx-table">
+        <thead><tr>
+          <th>${esc(tr("tx.terms.file"))}</th><th>${esc(tr("tx.terms.status"))}</th>
+          <th>${esc(tr("tx.terms.paid"))}</th><th>${esc(tr("tx.terms.delete"))}</th><th>${esc(tr("tx.terms.blocks"))}</th>
+        </tr></thead>
+        <tbody>${rows
+          .map((t) => `<tr${hit(t) ? ` class="is-match" title="${esc(tr("tx.terms.match"))}"` : ""}>
+            <td><code title="${esc(t.fileId)}">${esc(short(t.fileId, 12))}</code></td>
+            <td>${esc(statusLabel(t.status))}</td>
+            <td>${esc(fmtDate(t.paidUntil))}</td>
+            <td>${esc(fmtDate(t.deleteAfter))}</td>
+            <td>${Array.isArray(t.blocks) ? t.blocks.length : "—"}</td>
+          </tr>`)
+          .join("")}</tbody>
+      </table></div>`;
+    view.hidden = false;
+  }
 
   function short(s, n = 10) {
     if (!s) return "—";
@@ -39,6 +98,7 @@
     const includePending = $("pending").checked;
     $("metaLine").textContent = "Loading…";
     $("detail").hidden = true;
+    $("termView").hidden = true;
 
     const params = new URLSearchParams({
       limit: String(limit),
@@ -75,7 +135,9 @@
         const id = t.id || t.Id || "";
         const type = t.type || t.Type || "";
         const from = t.from || t.From || "";
-        const to = t.to || t.To || "";
+        const terms = type === "StorageTerm" ? parseTerms(t.data || t.Data) : null;
+        const count = (t.data || t.Data || {}).count ?? (terms ? terms.length : null);
+        const to = type === "StorageTerm" && count != null ? tr("tx.terms.items", { n: String(count) }) : t.to || t.To || "";
         const ts = t.timestamp || t.Timestamp || 0;
         const height = t.blockHeight ?? t.BlockHeight;
         const status = t.status || t.Status || "";
@@ -110,6 +172,10 @@
         data = text;
       }
       $("detail").textContent = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+      const type = data && (data.type || data.Type);
+      const terms = type === "StorageTerm" ? parseTerms(data.data || data.Data) : null;
+      if (terms) renderTerms(terms, $("q").value.trim());
+      else $("termView").hidden = true;
     } catch (e) {
       $("detail").textContent = String(e.message || e);
     }
