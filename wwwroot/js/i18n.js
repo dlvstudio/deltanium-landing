@@ -143,7 +143,7 @@
       "eco.copy":
         "Big platforms keep the ad money and sell your attention. Deltanium has no ads: people pay small fees in D for storage, bandwidth and transactions, and most of every fee goes straight to whoever provides that service.",
       "eco.store.t": "Run a Store node",
-      "eco.store.p": "Lend disk space to keep encrypted copies of posts and files. You get 80% of storage fees (800 D per GB per month, per copy) and 85% of bandwidth fees (300 D per GB served), paid monthly.",
+      "eco.store.p": "Lend disk space to keep encrypted copies of posts and files. You get 80% of storage fees (200 D per GB per month, per copy) and 85% of bandwidth fees (300 D per GB served), paid monthly.",
       "eco.blocker.share": "Fees",
       "eco.blocker.t": "Run a Block Creator",
       "eco.blocker.p": "Your machine confirms transactions and writes them into the chain. The fees from each block go to the node that writes it.",
@@ -151,7 +151,7 @@
       "eco.creator.p": "Set a monthly subscription or receive tips. You keep 90% — no ad algorithm decides what you are worth.",
       "eco.user.t": "Pay for what you store",
       "eco.user.p":
-        "Storage costs 800 D (800 VND) per GB per month per copy, paid from your wallet. Every item you store (post, reaction, comment, message) costs at least 0.1 D, and the app shows the exact amount before it is charged.",
+        "Storage costs 200 D (200 VND) per GB per month per copy, billed monthly from your wallet; deleting an item stops its payments. Every item you store (post, reaction, comment, message) costs at least 0.1 D, and the app shows the exact amount before it is charged.",
       "eco.flow.t": "Where every 100 D of storage fees goes",
       "eco.flow.node": "Node operators who store the data",
       "eco.flow.fund": "Network fund: repairs lost copies and keeps the network running",
@@ -258,7 +258,7 @@
       "how.m1.t": "1. Top up",
       "how.m1.p": "Bank transfer (VietQR) or PayPal. 100,000 VND becomes 97,000 D (3% fee).",
       "how.m2.t": "2. D in your wallet",
-      "how.m2.p": "1 D = 1 VND, backed 1:1 by money held in reserve. Storage: 800 D per GB per month per copy.",
+      "how.m2.p": "1 D = 1 VND, backed 1:1 by money held in reserve. Storage: 200 D per GB per month per copy, billed monthly.",
       "how.m3.t": "3. Pay for what you use",
       "how.m3.p": "Extra storage, bandwidth, tips and subscriptions. Every fee is split:",
       "how.m3.node": "Node operators",
@@ -525,7 +525,7 @@
       "eco.copy":
         "Các nền tảng lớn giữ toàn bộ tiền quảng cáo và bán sự chú ý của bạn. Deltanium không có quảng cáo: người dùng trả phí nhỏ bằng D cho lưu trữ, băng thông và giao dịch, và phần lớn mỗi khoản phí đi thẳng tới người cung cấp dịch vụ đó.",
       "eco.store.t": "Chạy node Store",
-      "eco.store.p": "Cho mạng mượn ổ cứng để giữ bản sao đã mã hóa của bài đăng và tệp. Bạn nhận 80% phí lưu trữ (800 D mỗi GB mỗi tháng, cho mỗi bản sao) và 85% phí băng thông (300 D mỗi GB phục vụ), trả hằng tháng.",
+      "eco.store.p": "Cho mạng mượn ổ cứng để giữ bản sao đã mã hóa của bài đăng và tệp. Bạn nhận 80% phí lưu trữ (200 D mỗi GB mỗi tháng, cho mỗi bản sao) và 85% phí băng thông (300 D mỗi GB phục vụ), trả hằng tháng.",
       "eco.blocker.share": "Phí",
       "eco.blocker.t": "Chạy Block Creator",
       "eco.blocker.p": "Máy của bạn xác nhận giao dịch và ghi chúng vào chuỗi khối. Phí của mỗi block được trả cho node ghi block đó.",
@@ -533,7 +533,7 @@
       "eco.creator.p": "Đặt gói đăng ký hằng tháng hoặc nhận tip. Bạn giữ 90% — không thuật toán quảng cáo nào quyết định bạn đáng giá bao nhiêu.",
       "eco.user.t": "Dùng bao nhiêu trả bấy nhiêu",
       "eco.user.p":
-        "Lưu trữ 800 D (800 VND) mỗi GB mỗi tháng cho mỗi bản sao, trả từ ví. Mỗi mục được lưu (bài viết, reaction, bình luận, tin nhắn) tốn ít nhất 0,1 D, và app hiện đúng số tiền trước khi trừ.",
+        "Lưu trữ 200 D (200 VND) mỗi GB mỗi tháng cho mỗi bản sao, trừ từ ví hằng tháng; xoá mục nào thì ngừng trả cho mục đó. Mỗi mục được lưu (bài viết, reaction, bình luận, tin nhắn) tốn ít nhất 0,1 D, và app hiện đúng số tiền trước khi trừ.",
       "eco.flow.t": "Mỗi 100 D phí lưu trữ đi về đâu",
       "eco.flow.node": "Người vận hành node lưu dữ liệu",
       "eco.flow.fund": "Quỹ mạng: khôi phục bản sao bị mất và duy trì mạng lưới",
@@ -640,7 +640,7 @@
       "how.m1.t": "1. Nạp tiền",
       "how.m1.p": "Chuyển khoản (VietQR) hoặc PayPal. 100.000 VND thành 97.000 D (phí 3%).",
       "how.m2.t": "2. D trong ví",
-      "how.m2.p": "1 D = 1 VND, bảo chứng 1:1 bằng tiền trong quỹ dự trữ. Lưu trữ: 800 D mỗi GB mỗi tháng cho mỗi bản sao.",
+      "how.m2.p": "1 D = 1 VND, bảo chứng 1:1 bằng tiền trong quỹ dự trữ. Lưu trữ: 200 D mỗi GB mỗi tháng cho mỗi bản sao, trả hằng tháng.",
       "how.m3.t": "3. Dùng bao nhiêu trả bấy nhiêu",
       "how.m3.p": "Lưu trữ thêm, băng thông, tip và gói đăng ký. Mỗi khoản phí được chia:",
       "how.m3.node": "Người vận hành node",

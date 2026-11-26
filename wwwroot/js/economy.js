@@ -1,9 +1,9 @@
 // Store node income estimate. Prices and splits mirror the Central API defaults
-// (GET /api/wallet/economics): storage 800 D/GB-month at 80% to nodes, bandwidth 300 D/GB at 85%,
+// (GET /api/wallet/economics): storage 200 D/GB-month at 80% to nodes, bandwidth 300 D/GB at 85%,
 // Store bond 100,000 D + 50,000 D per started 100 GB.
 (() => {
   const P = {
-    storagePerGbMonth: 800,
+    storagePerGbMonth: 200,
     storageNodeShare: 0.8,
     bandwidthPerGb: 300,
     bandwidthNodeShare: 0.85,
